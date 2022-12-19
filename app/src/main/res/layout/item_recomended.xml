@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/white_btn_recomended"
+    android:elevation="2dp">
+
+    <ImageView
+        android:id="@+id/imageRecomended"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_image6" />
+
+    <TextView
+        android:id="@+id/titleRecomended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="title"
+        android:textColor="#373B54"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageRecomended"
+        app:layout_constraintStart_toStartOf="@+id/imageRecomended"
+        app:layout_constraintTop_toBottomOf="@+id/imageRecomended" />
+
+    <TextView
+        android:id="@+id/fee_recomended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:text="$0.0"
+        android:textColor="#373B54"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_to_card"
+        app:layout_constraintEnd_toStartOf="@+id/btn_add_to_card"
+        app:layout_constraintStart_toStartOf="@+id/imageRecomended"
+        app:layout_constraintTop_toTopOf="@+id/btn_add_to_card" />
+
+    <ImageView
+        android:id="@+id/btn_add_to_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageRecomended"
+        app:layout_constraintTop_toBottomOf="@+id/titleRecomended"
+        app:srcCompat="@drawable/plus_circle" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
