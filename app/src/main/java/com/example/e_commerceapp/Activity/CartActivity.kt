@@ -1,6 +1,5 @@
 package com.example.e_commerceapp.Activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,14 +12,14 @@ import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityCartBinding
 
 class CartActivity : AppCompatActivity() {
-    lateinit var binding:ActivityCartBinding
+    lateinit var binding: ActivityCartBinding
     lateinit var managementCart: ManagementCart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this,R.layout.activity_cart)
         managementCart = ManagementCart(this)
         initList()
-        buttomNavigation()
+        // buttomNavigation()
         calculateCard()
     }
     fun calculateCard(){
@@ -39,16 +38,16 @@ class CartActivity : AppCompatActivity() {
         totalCard.text = "$$total"
     }
 
-    fun buttomNavigation(){
-        val homeBtn = binding.homeBtn
-        val cartBtn = binding.cartBtn
-        homeBtn.setOnClickListener {
-            startActivity(Intent(this@CartActivity, MainActivity::class.java))
-        }
-        cartBtn.setOnClickListener {
-            startActivity(Intent(this@CartActivity, CartActivity::class.java))
-        }
-    }
+//    fun buttomNavigation(){
+//        val homeBtn = binding.homeBtn
+//        val cartBtn = binding.cartBtn
+//        homeBtn.setOnClickListener {
+//            startActivity(Intent(this@CartActivity, MainActivity::class.java))
+//        }
+//        cartBtn.setOnClickListener {
+//            startActivity(Intent(this@CartActivity, CartActivity::class.java))
+//        }
+//    }
 
     fun initList(){
         val manager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)

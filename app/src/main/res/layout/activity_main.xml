@@ -14,6 +14,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -162,25 +163,60 @@
 
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+                    app:layout_constraintStart_toStartOf="@+id/charsearch"
                     app:layout_constraintTop_toBottomOf="@+id/recyclreCategorieList" />
 
-                <EditText
-                    android:id="@+id/editTextTextPersonName"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/charsearch"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:background="@drawable/search_edit_background"
-                    android:drawableStart="@drawable/search"
-                    android:drawablePadding="18dp"
-                    android:ems="10"
-                    android:hint="Search Your Favorite Vitamin"
-                    android:inputType="textPersonName"
-                    android:paddingStart="20dp"
-
-                    android:textStyle="italic"
+                    android:paddingHorizontal="8dp"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                    <ImageView
+                        android:id="@+id/imgeSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/search"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/black" />
+
+                    <EditText
+                        android:id="@+id/charsearch1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:ems="10"
+                        android:hint="Search Your Favorite Vitamin"
+                        android:inputType="textPersonName"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imgeSearch"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/charsearch"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:background="@drawable/search_edit_background"-->
+                <!--                    android:drawableStart="@drawable/search"-->
+                <!--                    android:drawablePadding="18dp"-->
+                <!--                    android:ems="10"-->
+                <!--                    android:hint="Search Your Favorite Vitamin"-->
+                <!--                    android:inputType="textPersonName"-->
+                <!--                    android:paddingStart="20dp"-->
+
+                <!--                    android:textStyle="italic"-->
+                <!--                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout"-->
+                <!--                    app:layout_constraintStart_toStartOf="@+id/constraintLayout"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />-->
 
                 <TextView
                     android:id="@+id/textView9"
@@ -192,8 +228,8 @@
                     android:textSize="18sp"
 
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                    app:layout_constraintStart_toStartOf="@+id/charsearch"
+                    app:layout_constraintTop_toBottomOf="@+id/charsearch" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -224,141 +260,15 @@
         </LinearLayout>
     </ScrollView>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinatorLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="com.example.e_commerceapp.ButtomNavigationFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout="@layout/fragment_buttom_navigation" />
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:backgroundTint="#f6f6f6"
-            app:fabCradleMargin="8dp"
-            app:fabCradleRoundedCornerRadius="50dp"
-            app:fabCradleVerticalOffset="6dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/homeBtn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn1" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textAlignment="center"
-                        android:textColor="#676767"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/bottom_btn2" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Profile"
-                        android:textAlignment="center"
-                        android:textColor="#676767"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/cartbtn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn5" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cart"
-                        android:textAlignment="center"
-                        android:textColor="#676767"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn3" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Support"
-                        android:textAlignment="center"
-                        android:textColor="#676767"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn4" />
-
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Settings"
-                        android:textAlignment="center"
-                        android:textColor="#676767"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

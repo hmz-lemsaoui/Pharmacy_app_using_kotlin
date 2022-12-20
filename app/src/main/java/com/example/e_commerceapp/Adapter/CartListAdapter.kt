@@ -15,7 +15,7 @@ import com.example.e_commerceapp.databinding.ItemCartBinding
 class CartListAdapter(
     val listMedicalSelected: ArrayList<RecomendedDomain>,
     val changeNumberItemListener: ChangeNumberItemListener,
-    val mContext: Context
+    mContext: Context
 ) : RecyclerView.Adapter<CartListAdapter.MyViewHolder>(){
     lateinit var binding: ItemCartBinding
     var managementCart = ManagementCart(mContext)

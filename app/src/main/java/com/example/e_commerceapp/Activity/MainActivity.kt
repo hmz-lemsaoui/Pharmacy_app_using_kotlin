@@ -1,6 +1,5 @@
 package com.example.e_commerceapp.Activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -19,21 +18,22 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         recyclerViewCategory()
         recyclerViewPopular()
-        buttomNavigation()
+        // buttomNavigation()
 
     }
-    fun buttomNavigation(){
-        val homeBtn = binding.homeBtn
-        val cartBtn = binding.cartbtn
-        homeBtn.setOnClickListener {
-            startActivity(Intent(this@MainActivity, MainActivity::class.java))
-        }
-        cartBtn.setOnClickListener {
-            startActivity(Intent(this@MainActivity, CartActivity::class.java))
-        }
-    }
+//    fun buttomNavigation(){
+//        val homeBtn = binding.homeBtn
+//        val cartBtn = binding.cartbtn
+//        homeBtn.setOnClickListener {
+//            startActivity(Intent(this@MainActivity, MainActivity::class.java))
+//        }
+//        cartBtn.setOnClickListener {
+//            startActivity(Intent(this@MainActivity, CartActivity::class.java))
+//        }
+//    }
 
     private fun recyclerViewPopular(){
+        val charsearch1 = binding.charsearch1
         val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.recyclerPopularList.layoutManager = manager
         val data = listOf(
@@ -45,8 +45,14 @@ class MainActivity : AppCompatActivity() {
             RecomendedDomain("test6","ic_image6","text dor description",16.4,4,14,2000,1),
             RecomendedDomain("test7","ic_image7","text dor description",20.9,3,80,5000,1)
         )
-        val adapter = RecomendedAdapter(data)
+
+        val adapter = RecomendedAdapter(data,this)
         binding.recyclerPopularList.adapter = adapter
+        binding.imgeSearch.setOnClickListener {
+            val searchValue = charsearch1.text.toString()
+            adapter.filter.filter(searchValue)
+        }
+
     }
 
     private fun recyclerViewCategory(){
