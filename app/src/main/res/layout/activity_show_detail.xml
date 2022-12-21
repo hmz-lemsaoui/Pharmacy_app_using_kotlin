@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:background="#ecebe6"
+    android:background="#f6f7fb"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ShowDetailActivity">
@@ -132,7 +132,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/plus" />
+                            app:srcCompat="@drawable/ic_plus" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -155,7 +155,7 @@
                             android:id="@+id/imageView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/star" />
+                            app:srcCompat="@drawable/ic_star" />
 
                         <TextView
                             android:id="@+id/startxt"

@@ -54,6 +54,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageRecomended"
         app:layout_constraintTop_toBottomOf="@+id/titleRecomended"
-        app:srcCompat="@drawable/plus_circle" />
+        app:srcCompat="@drawable/ic_plus_circle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

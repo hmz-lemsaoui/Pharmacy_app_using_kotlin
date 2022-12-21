@@ -1,9 +1,13 @@
 package com.example.e_commerceapp.Adapter
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.e_commerceapp.Activity.ShowDetailActivity
@@ -12,10 +16,15 @@ import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ItemRecomendedBinding
 
 class RecomendedAdapter(
-    val popularList: List<RecomendedDomain>
-) : RecyclerView.Adapter<RecomendedAdapter.MyViewHolder>(){
+    val popularList: List<RecomendedDomain>,
+    val mCon: Context
+) : RecyclerView.Adapter<RecomendedAdapter.MyViewHolder>() ,Filterable{
     lateinit var binding: ItemRecomendedBinding
+    var listProduitsFiltrer: List<RecomendedDomain> = ArrayList()
 
+    init {
+        listProduitsFiltrer = popularList
+    }
     inner class MyViewHolder(
         itemView: View
     ) : RecyclerView.ViewHolder(itemView){
@@ -34,9 +43,9 @@ class RecomendedAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val data = popularList[position]
+        val data = listProduitsFiltrer[position]
         holder.titleRecomended.text = data.title
-        holder.feeRecomended.text = "$${data.fee.toString()}"
+        holder.feeRecomended.text = "$${data.fee}"
 
         val mContext = holder.itemView.context
         val drawableResourceId = mContext.resources.getIdentifier(data.pic,"drawable",mContext.packageName)
@@ -50,6 +59,38 @@ class RecomendedAdapter(
     }
 
     override fun getItemCount(): Int {
-        return popularList.size
+        return listProduitsFiltrer.size
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                var strSearch = p0.toString()
+                listProduitsFiltrer = if (strSearch.isEmpty()) {
+                    popularList
+                } else {
+                    var resultsProduits = ArrayList<RecomendedDomain>()
+                    for (pro in popularList) {
+                        if (pro.title.lowercase().contains(strSearch.lowercase())
+                        ) {
+                            resultsProduits.add(pro)
+                        }
+                    }
+                    resultsProduits
+                }
+                var filterResults = FilterResults()
+                filterResults.values = listProduitsFiltrer
+                return filterResults
+            }
+
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+                listProduitsFiltrer = p1?.values as List<RecomendedDomain>
+                if (listProduitsFiltrer.isEmpty()){
+                    Toast.makeText(mCon,"No Medical for $p0",Toast.LENGTH_SHORT).show()
+                }
+                notifyDataSetChanged()
+            }
+
+        }
     }
 }
