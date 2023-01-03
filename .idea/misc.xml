@@ -23,13 +23,18 @@
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable-xxhdpi/ic_image1.xml" value="0.129" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable-xxxhdpi/ic_image1.xml" value="0.129" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/backgound_category.xml" value="0.238" />
+        <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/background_btn.xml" value="0.239" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/background_white.xml" value="0.233" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/card_background.xml" value="0.238" />
+        <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/grey_bakground.xml" value="0.239" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/grey_bar.xml" value="0.129" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/grey_btn_background.xml" value="0.233" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.129" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/orange_background.xml" value="0.2105" />
+        <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/oval_background.xml" value="0.239" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/search_edit_background.xml" value="0.238" />
+        <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/top_background.xml" value="0.129" />
+        <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/white_background.xml" value="0.238" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/white_btn_recomended.xml" value="0.238" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/white_button.xml" value="0.2105" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/drawable/yellow_bar.xml" value="0.233" />
@@ -38,6 +43,7 @@
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/layout/activity_intro.xml" value="0.22864583333333333" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/layout/activity_show_detail.xml" value="0.4194373401534527" />
+        <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/layout/activity_user_profile.xml" value="0.3954954954954955" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/layout/fragment_buttom_navigation.xml" value="0.22864583333333333" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/layout/item_cart.xml" value="0.536" />
         <entry key="..\:/Users/LEMSAOUI/AndroidStudioProjects/EcommerceApp/app/src/main/res/layout/item_category.xml" value="0.6" />

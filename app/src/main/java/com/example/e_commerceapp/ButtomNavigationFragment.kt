@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.e_commerceapp.Activity.CartActivity
 import com.example.e_commerceapp.Activity.MainActivity
+import com.example.e_commerceapp.Activity.UserProfileActivity
 import com.example.e_commerceapp.databinding.FragmentButtomNavigationBinding
 
 class ButtomNavigationFragment : Fragment() {
@@ -20,11 +21,15 @@ class ButtomNavigationFragment : Fragment() {
         binding = FragmentButtomNavigationBinding.inflate(inflater, container, false)
         val homeBtn = binding.homeBtn
         val cartBtn = binding.cartBtn
+        val profileBtn = binding.profilebtn
         homeBtn.setOnClickListener {
             startActivity(Intent(context, MainActivity::class.java))
         }
         cartBtn.setOnClickListener {
             startActivity(Intent(context, CartActivity::class.java))
+        }
+        profileBtn.setOnClickListener {
+            startActivity(Intent(context, UserProfileActivity::class.java))
         }
         return binding.root
     }
