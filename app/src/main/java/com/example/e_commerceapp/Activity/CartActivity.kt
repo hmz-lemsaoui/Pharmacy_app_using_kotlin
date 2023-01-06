@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.e_commerceapp.Adapter.CartListAdapter
 import com.example.e_commerceapp.Healper.ManagementCart
 import com.example.e_commerceapp.Interface.ChangeNumberItemListener
@@ -21,6 +23,7 @@ class CartActivity : AppCompatActivity() {
         initList()
         // buttomNavigation()
         calculateCard()
+
     }
     fun calculateCard(){
         val totalItemCard = binding.totalItemCard
@@ -59,6 +62,31 @@ class CartActivity : AppCompatActivity() {
             }
 
         },this)
+
+        //swipt to remove item from recyclerview
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                // Remove the item from your data set
+                data.removeAt(position)
+                // Notify the adapter that the item was removed
+                adapter.notifyItemRemoved(position)
+
+            }
+        })
+        // Attach the item touch helper to your RecyclerView
+        itemTouchHelper.attachToRecyclerView(binding.recyclerViewList)
+
+
         binding.recyclerViewList.adapter = adapter
         val isEmptyCard = binding.isEmptyCard
         val scrollViewCardList = binding.scrollViewCardList
@@ -69,5 +97,7 @@ class CartActivity : AppCompatActivity() {
             isEmptyCard.visibility = View.GONE
             scrollViewCardList.visibility = View.VISIBLE
         }
+
+
     }
 }

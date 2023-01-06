@@ -1,7 +1,10 @@
 package com.example.e_commerceapp.Adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +57,15 @@ class RecomendedAdapter(
         holder.btn_add_to_card.setOnClickListener {
             val intent = Intent(holder.itemView.context, ShowDetailActivity::class.java)
             intent.putExtra("object",data)
-            holder.itemView.context.startActivity(intent)
+//            holder.itemView.context.startActivity(intent)
+
+            //pour transition
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                    holder.itemView.context as Activity?,
+                    Pair.create(binding.titleRecomended, "titleTransition"),
+                    Pair.create(binding.imageRecomended, "imageTransition"),
+                    Pair.create(binding.feeRecomended, "priceTransition"))
+            holder.itemView.context.startActivity(intent,options.toBundle())
         }
     }
 

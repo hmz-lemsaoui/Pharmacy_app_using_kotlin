@@ -20,7 +20,7 @@ class ProduitsActivity : AppCompatActivity(){
         recyclerViewPopular()
         buttomNavigation()
         binding.back2.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
 
     }
@@ -28,7 +28,7 @@ class ProduitsActivity : AppCompatActivity(){
         val homeBtn = binding.homeBtn
         val cartBtn = binding.cartbtn
         homeBtn.setOnClickListener {
-            startActivity(Intent(this@ProduitsActivity, MainActivity::class.java))
+            startActivity(Intent(this@ProduitsActivity, HomeActivity::class.java))
         }
         cartBtn.setOnClickListener {
             startActivity(Intent(this@ProduitsActivity, CartActivity::class.java))
@@ -61,5 +61,6 @@ class ProduitsActivity : AppCompatActivity(){
             val searchValue = charsearch1.text.toString()
             adapter.filter.filter(searchValue)
         }
+
     }
 }

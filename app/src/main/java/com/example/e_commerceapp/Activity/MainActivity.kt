@@ -1,82 +1,98 @@
 package com.example.e_commerceapp.Activity
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.e_commerceapp.Adapter.CategoryAdapter
-import com.example.e_commerceapp.Adapter.RecomendedAdapter
-import com.example.e_commerceapp.Domain.CategoryDomain
-import com.example.e_commerceapp.Domain.RecomendedDomain
-import com.example.e_commerceapp.R
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
+import com.example.e_commerceapp.Healper.DbHelper
+import com.example.e_commerceapp.MyListener
 import com.example.e_commerceapp.databinding.ActivityMainBinding
+import com.example.e_commerceapp.models.User
+import java.util.*
 
-class MainActivity : AppCompatActivity() {
-    lateinit var binding : ActivityMainBinding
+class MainActivity : AppCompatActivity(), MyListener {
+    private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        recyclerViewCategory()
-        recyclerViewPopular()
-        binding.seeAll.setOnClickListener{
-            startActivity(Intent(this@MainActivity, ProduitsActivity::class.java))
+        try {
+            this.supportActionBar!!.hide()
+        } catch (e: NullPointerException) {
         }
-
-        // buttomNavigation()
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val viewPager: ViewPager = binding.viewPager
+        val pagerAdapter = AuthenticationPagerAdapter(supportFragmentManager)
+        pagerAdapter.addFragment(LoginFragment())
+        pagerAdapter.addFragment(RegisterFragment())
+        viewPager.adapter = pagerAdapter
     }
-//    fun buttomNavigation(){
-//        val homeBtn = binding.homeBtn
-//        val cartBtn = binding.cartbtn
-//        homeBtn.setOnClickListener {
-//            startActivity(Intent(this@MainActivity, MainActivity::class.java))
-//        }
-//        cartBtn.setOnClickListener {
-//            startActivity(Intent(this@MainActivity, CartActivity::class.java))
-//        }
-//    }
-
-    private fun recyclerViewPopular(){
-        val charsearch1 = binding.charsearch1
-        val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        binding.recyclerPopularList.layoutManager = manager
-        val data = listOf(
-            RecomendedDomain("test1","ic_image1","text dor description",13.0,5,20,100,1),
-            RecomendedDomain("test2","ic_image2","text dor description",12.0,5,40,300,1),
-            RecomendedDomain("test3","ic_image4","text dor description",19.0,3,60,1100,1),
-            RecomendedDomain("test4","ic_image5","text dor description",12.0,1,20,1020,1),
-            RecomendedDomain("test5","ic_image6","text dor description",13.4,5,10,1025,1),
-            RecomendedDomain("test6","ic_image7","text dor description",16.4,4,14,2000,1),
-            RecomendedDomain("test7","ic_image3","text dor description",20.9,3,80,5000,1)
-        )
-
-        val adapter = RecomendedAdapter(data,this)
-        binding.recyclerPopularList.adapter = adapter
-        binding.imgeSearch.setOnClickListener {
-            val searchValue = charsearch1.text.toString()
-            adapter.filter.filter(searchValue)
+    override fun onAttachFragment(fragment: Fragment) {
+        if (fragment is LoginFragment) {
+            fragment.setOnButtonClickedListener(this)
+        } else if (fragment is RegisterFragment) {
+            fragment.setOnButtonClickedListener(this)
         }
-
     }
 
-    private fun recyclerViewCategory(){
-        val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        binding.recyclreCategorieList.layoutManager = manager
-        val data = listOf(
-            CategoryDomain("test","ic_image1"),
-            CategoryDomain("test2","ic_image2"),
-            CategoryDomain("test3","ic_image3"),
-            CategoryDomain("test4","ic_image4"),
-            CategoryDomain("test5","ic_image5"),
-            CategoryDomain("test5","ic_image6"),
-            CategoryDomain("test5","ic_image7"),
-            CategoryDomain("test5","ic_image8"),
-            CategoryDomain("test5","ic_image9"),
-            CategoryDomain("test5","ic_image10"),
-            CategoryDomain("test5","ic_image11")
-        )
-        val adapter = CategoryAdapter(data)
-        binding.recyclreCategorieList.adapter = adapter
+    internal inner class AuthenticationPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(
+        fm!!,
+        BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+    ) {
+        private val fragmentList: ArrayList<Fragment> = ArrayList<Fragment>()
+        override fun getCount(): Int {
+            return fragmentList.size
+        }
+
+        override fun getItem(i: Int): Fragment {
+            return fragmentList[i]
+        }
+
+
+        fun addFragment(fragment: Fragment) {
+            fragmentList.add(fragment)
+        }
+    }
+    override fun loginUser(value: User) {
+        val user =DbHelper(this).verifyLogin(value)
+        if (user!=null) {
+            val intent = Intent(this, HomeActivity::class.java)
+            val sharedPref = getSharedPreferences("userinfos", Context.MODE_PRIVATE).edit()
+            sharedPref.putInt("id", user.id)
+            sharedPref.putString("username", user.name)
+            sharedPref.putString("email", user.email)
+            sharedPref.putString("password", user.password)
+            sharedPref.putInt("image", value.image)
+            sharedPref.apply()
+            startActivity(intent)
+
+        } else {
+            Toast.makeText(this, "Incorrect Login Or Password", Toast.LENGTH_SHORT).show()
+        }
+    }
+    override fun registerNewUser(value: User, repass: String) {
+        if (value.password.equals(repass)) {
+            DbHelper(this).insertUser(value)
+//            userName = value.name.toString()
+            val intent = Intent(this, HomeActivity::class.java)
+
+            val sharedPref = getSharedPreferences("userinfos", Context.MODE_PRIVATE).edit()
+            sharedPref.putInt("id", value.id)
+            sharedPref.putString("username", value.name)
+            sharedPref.putString("email", value.email)
+            sharedPref.putString("password", value.password)
+            sharedPref.putInt("image", value.image)
+            sharedPref.apply()
+
+            startActivity(intent)
+        } else {
+            Toast.makeText(this, "Passwords Do Not Match Each other", Toast.LENGTH_LONG).show()
+        }
+
     }
 }

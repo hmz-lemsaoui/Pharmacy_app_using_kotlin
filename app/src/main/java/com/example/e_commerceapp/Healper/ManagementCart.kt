@@ -38,6 +38,7 @@ class ManagementCart (
         tinyDB.putListObject("CardList",listProduits)
         changeNumberItemListener.changed()
     }
+
     fun plusNumberProduct(listProduits: ArrayList<RecomendedDomain>,position: Int,changeNumberItemListener: ChangeNumberItemListener){
         listProduits[position].numberInCart += 1
         tinyDB.putListObject("CardList",listProduits)
