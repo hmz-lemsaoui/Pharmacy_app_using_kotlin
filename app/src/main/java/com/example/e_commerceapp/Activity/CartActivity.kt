@@ -40,18 +40,6 @@ class CartActivity : AppCompatActivity() {
         taxCard.text = "$$tax"
         totalCard.text = "$$total"
     }
-
-//    fun buttomNavigation(){
-//        val homeBtn = binding.homeBtn
-//        val cartBtn = binding.cartBtn
-//        homeBtn.setOnClickListener {
-//            startActivity(Intent(this@CartActivity, MainActivity::class.java))
-//        }
-//        cartBtn.setOnClickListener {
-//            startActivity(Intent(this@CartActivity, CartActivity::class.java))
-//        }
-//    }
-
     fun initList(){
         val manager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         binding.recyclerViewList.layoutManager = manager
@@ -59,6 +47,7 @@ class CartActivity : AppCompatActivity() {
         val adapter = CartListAdapter(data,object : ChangeNumberItemListener{
             override fun changed() {
                 calculateCard()
+                testVisible()
             }
 
         },this)
@@ -76,11 +65,13 @@ class CartActivity : AppCompatActivity() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                // Remove the item from your data set
-                data.removeAt(position)
-                // Notify the adapter that the item was removed
-                adapter.notifyItemRemoved(position)
-
+                managementCart.deleteElementBySwip(data,position,object : ChangeNumberItemListener{
+                    override fun changed() {
+                        calculateCard()
+                        testVisible()
+                        adapter.notifyDataSetChanged()
+                    }
+                })
             }
         })
         // Attach the item touch helper to your RecyclerView
@@ -88,6 +79,9 @@ class CartActivity : AppCompatActivity() {
 
 
         binding.recyclerViewList.adapter = adapter
+        testVisible()
+    }
+    private fun testVisible(){
         val isEmptyCard = binding.isEmptyCard
         val scrollViewCardList = binding.scrollViewCardList
         if (managementCart.getListCart().isEmpty()){
@@ -97,7 +91,5 @@ class CartActivity : AppCompatActivity() {
             isEmptyCard.visibility = View.GONE
             scrollViewCardList.visibility = View.VISIBLE
         }
-
-
     }
 }

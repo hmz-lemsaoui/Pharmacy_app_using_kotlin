@@ -7,7 +7,7 @@ import com.example.e_commerceapp.Interface.ChangeNumberItemListener
 
 class ManagementCart (
     val mContext: Context
-    ){
+){
     val tinyDB = TinyDb(mContext)
     fun insertProduit(item: RecomendedDomain){
         val listProduits: ArrayList<RecomendedDomain> = getListCart()
@@ -35,6 +35,11 @@ class ManagementCart (
             listProduits.removeAt(position)
         } else
             listProduits[position].numberInCart -= 1
+        tinyDB.putListObject("CardList",listProduits)
+        changeNumberItemListener.changed()
+    }
+    fun deleteElementBySwip(listProduits: ArrayList<RecomendedDomain>,position: Int,changeNumberItemListener: ChangeNumberItemListener){
+        listProduits.removeAt(position)
         tinyDB.putListObject("CardList",listProduits)
         changeNumberItemListener.changed()
     }

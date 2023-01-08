@@ -10,8 +10,7 @@ import java.util.*
 class TinyDb(mContext: Context) {
 
     var preferences: SharedPreferences = mContext.getSharedPreferences("name", Context.MODE_PRIVATE)
-
-
+    
     private fun putListString(key: String, stringList: ArrayList<String>) {
         val myStringList = stringList.toTypedArray()
         preferences.edit().putString(key, TextUtils.join("‚‗‚", myStringList)).apply()

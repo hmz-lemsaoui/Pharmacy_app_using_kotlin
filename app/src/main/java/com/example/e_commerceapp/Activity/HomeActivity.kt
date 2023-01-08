@@ -16,7 +16,6 @@ import com.example.e_commerceapp.Domain.CategoryDomain
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityHomeBinding
-import com.example.e_commerceapp.models.User
 
 
 class HomeActivity : AppCompatActivity() {

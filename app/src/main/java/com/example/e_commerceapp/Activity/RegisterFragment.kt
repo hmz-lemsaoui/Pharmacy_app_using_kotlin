@@ -1,34 +1,72 @@
 package com.example.e_commerceapp.Activity
 
+
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.e_commerceapp.MyListener
+import android.widget.Toast
 import com.example.e_commerceapp.databinding.FragmentRegisterBinding
-import com.example.e_commerceapp.models.User
+import com.example.e_commerceapp.Domain.User
+import com.example.e_commerceapp.Healper.DbHelper
 
 
 class RegisterFragment : Fragment() {
-    private var _binding: FragmentRegisterBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        _binding = FragmentRegisterBinding.inflate(inflater , container , false)
-        return  binding.root
+    private lateinit var binding: FragmentRegisterBinding
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.register.setOnClickListener {
-            myListener.registerNewUser(User(name = binding.name.text.toString(), email = binding.email.text.toString(), password = binding.password.text.toString()),binding.confirmation.text.toString())
+            registerUser()
         }
     }
 
-    lateinit var myListener: MyListener
-    fun setOnButtonClickedListener(myListener : MyListener) {
-        this.myListener = myListener
-    }
+    private fun registerUser() {
+        val db = DbHelper(requireContext())
+        var txterror = binding.texterror
+        var name = binding.name.text.toString()
+        var email = binding.email.text.toString()
+        var password = binding.password.text.toString()
+        var confPassword = binding.confirmation.text.toString()
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confPassword.isEmpty()) {
+            txterror.text = "tous les champs sont obligatoires"
+            txterror.visibility = View.VISIBLE
+        } else if (password != confPassword) {
+            txterror.text = "les mots de passe sont differents"
+            txterror.visibility = View.VISIBLE
+        } else if (db.checkIfEmailExist(email)) {
+            txterror.text = "user with this email exist already"
+            txterror.visibility = View.VISIBLE
+        } else {
+            val result = db.insertUser(User(name = name,email=email,password = password))
+            if (!result){
+                txterror.text = "try again !"
+                txterror.visibility = View.VISIBLE
+            }else{
+                Toast.makeText(context, "successfully registered", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, HomeActivity::class.java)
 
+                val sharedPref = requireContext().getSharedPreferences("userinfos", Context.MODE_PRIVATE).edit()
+                sharedPref.apply{
+                    //putInt("id", value.id)
+                    putString("username", name)
+                    putString("email", email)
+                    putString("password", password)
+                    //putInt("image", value.image)
+                    apply()
+                }
+                startActivity(intent)
+            }
+        }
+    }
 }
