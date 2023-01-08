@@ -7,7 +7,9 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.e_commerceapp.Activity.MainActivity
+import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.Domain.User
+import com.example.e_commerceapp.R
 
 
 class DbHelper(var context: Context) :
@@ -27,10 +29,51 @@ class DbHelper(var context: Context) :
                 $COL_IMAGE INTEGER)
         """.trimIndent()
         )
+        db?.execSQL(
+            """ CREATE TABLE $TABLE_NAME_MED(
+                $COL_ID_MED INTEGER PRIMARY KEY AUTOINCREMENT,
+                $COL_TITLE VARCHAR(256),
+                $COL_DISCRIPTION VARCHAR(256),
+                $COL_PRICE REAL,
+                $COL_CATEGORY VARCHAR(256),
+                $COL_PICTURE VARCHAR(256),
+                $COL_STAR INTEGER,
+                $COL_TIME INTEGER,
+                $COL_NUMBERINCARD INTEGER,
+                $COL_ISFAVORITE INTEGER)
+        """.trimIndent()
+        )
+        var data = ArrayList<RecomendedDomain>()
+        data.apply {
+            add(RecomendedDomain("test1", "image1","text dor description",13.0,5,20,100,1))
+            add(RecomendedDomain("test2","image1","text dor description",12.0,5,40,300,1))
+            add(RecomendedDomain("test3", "image1","text dor description",19.0,3,60,1100,1))
+            add(RecomendedDomain("test4","image1","text dor description",12.0,1,20,1020,1))
+            add(RecomendedDomain("test5", "image1","text dor description",13.4,5,10,1025,1))
+            add(RecomendedDomain("test6", "image1","text dor description",16.4,4,14,2000,1))
+            add(RecomendedDomain("test7", "image1","text dor description",20.9,3,80,5000,1))
+        }
+        val values = ContentValues()
+        data.forEach {
+            values.apply {
+                put(COL_TITLE,it.title)
+                put(COL_PICTURE,it.pic)
+                put(COL_DISCRIPTION,it.description)
+                put(COL_PRICE,it.fee)
+                put(COL_CATEGORY,it.category)
+                put(COL_STAR,it.star)
+                put(COL_TIME,it.time)
+                put(COL_NUMBERINCARD,it.numberInCart)
+                put(COL_ISFAVORITE,it.isFavorite)
+            }
+            db?.insert(TABLE_NAME_MED,null,values)
+        }
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME_MED")
         onCreate(db)
     }
 
@@ -107,10 +150,28 @@ class DbHelper(var context: Context) :
         val count = db.update(TABLE_NAME, values, selection, selectionArgs)
         db.close()
     }
+    fun getAllMeds():ArrayList<RecomendedDomain>
+    {
+        val medist=ArrayList<RecomendedDomain>()
+        val db=this.readableDatabase
+        val cur: Cursor = db.rawQuery("SELECT $COL_ID_MED," +
+                "$COL_TITLE, $COL_DISCRIPTION, $COL_PRICE, $COL_CATEGORY, $COL_PICTURE," +
+                "$COL_STAR, $COL_TIME, $COL_NUMBERINCARD, $COL_ISFAVORITE FROM $TABLE_NAME_MED",null)
+        while (cur.moveToNext()){
+                medist.add(RecomendedDomain(cur.getString(1),
+                    cur.getString(5),
+                    cur.getString(2),
+                    cur.getDouble(3),cur.getInt(6),
+                    cur.getInt(7),0,cur.getInt(8),
+                    cur.getInt(9) as Boolean , cur.getString(4)))
+            }
+        closeElements(db,cur)
+        return medist
+    }
 
     companion object {
         // Database Version
-        private val DATABASE_VERSION = 1
+        private val DATABASE_VERSION = 3
         // Database Name
         private val DATABASE_NAME = "DbApp"
         // table users
@@ -124,6 +185,21 @@ class DbHelper(var context: Context) :
         private val COL_CODE = "user_codepostal"
         private val COL_IMAGE = "user_image"
         var userName = "ha"
+
+        // table medicaments
+        private val TABLE_NAME_MED = "MEDICAMENTS"
+        private val COL_ID_MED = "med_id"
+        private val COL_TITLE = "med_title"
+        private val COL_DISCRIPTION = "med_discription"
+        private val COL_PRICE= "med_price"
+        private val COL_CATEGORY= "user_category"
+        private val COL_PICTURE = "med_picture"
+        private val COL_STAR = "med_star"
+        private val COL_TIME = "med_time"
+        private val COL_NUMBERINCARD = "med_numberInCard"
+        private val COL_ISFAVORITE = "med_isFavorite"
+
+
     }
 
 }

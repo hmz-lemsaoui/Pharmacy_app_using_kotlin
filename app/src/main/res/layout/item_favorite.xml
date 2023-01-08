@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@drawable/white_btn_recomended"
+        android:elevation="2dp">
+
+        <ImageView
+            android:id="@+id/imageFavorite"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:transitionName="imageTransition"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_image6" />
+
+        <TextView
+            android:id="@+id/titleFavorite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Your Title Here "
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:transitionName="titleTransition"
+            app:layout_constraintEnd_toStartOf="@+id/imageFavorite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionFavorite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="10dp"
+            android:text="Description here for evry item bla bla bla\nOther description here for evry item"
+            android:textColor="#000000"
+            android:transitionName="descriptionTransition"
+            app:layout_constraintEnd_toStartOf="@+id/imageFavorite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bleu_bar">
+            <TextView
+                android:id="@+id/fee_Favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0 MAD"
+                android:layout_marginHorizontal="8dp"
+                android:textColor="#373B54"
+                android:textStyle="bold"
+                android:transitionName="priceTransition"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageFavorite">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="8.9"
+                android:textStyle="bold"
+                android:textColor="#FFC107"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_star" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/remove_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_favorite" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

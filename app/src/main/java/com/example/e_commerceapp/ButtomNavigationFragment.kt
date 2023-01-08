@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.e_commerceapp.Activity.CartActivity
+import com.example.e_commerceapp.Activity.FavoritesActivity
 import com.example.e_commerceapp.Activity.HomeActivity
 import com.example.e_commerceapp.Activity.UserProfileActivity
 import com.example.e_commerceapp.databinding.FragmentButtomNavigationBinding
@@ -23,6 +24,7 @@ class ButtomNavigationFragment : Fragment() {
         val homeBtn = binding.homeBtn
         val cartBtn = binding.cartBtn
         val profileBtn = binding.profilebtn
+        val favoriteBtn=binding.favoriteBtn
         homeBtn.setOnClickListener {
             startActivity(Intent(context, HomeActivity::class.java))
         }
@@ -32,6 +34,9 @@ class ButtomNavigationFragment : Fragment() {
         profileBtn.setOnClickListener {
             startActivity(Intent(context, UserProfileActivity::class.java))
 
+        }
+        favoriteBtn.setOnClickListener {
+            startActivity(Intent(context, FavoritesActivity::class.java))
         }
         return binding.root
     }

@@ -1,5 +1,6 @@
 package com.example.e_commerceapp.Domain
 
+import com.example.e_commerceapp.Healper.ManagementFavorite
 import java.io.Serializable
 
 data class RecomendedDomain(
@@ -10,5 +11,7 @@ data class RecomendedDomain(
     val star: Int,
     val time: Int,
     val calories: Int,
-    var numberInCart: Int
+    var numberInCart: Int,
+    var isFavorite: Boolean = false,
+    var category:String="category1"
     ): Serializable

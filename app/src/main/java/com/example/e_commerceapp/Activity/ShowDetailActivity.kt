@@ -6,16 +6,19 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.Healper.ManagementCart
+import com.example.e_commerceapp.Healper.ManagementFavorite
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityShowDetailBinding
 
 class ShowDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityShowDetailBinding
     lateinit var managementCart: ManagementCart
+    lateinit var managementFavorite: ManagementFavorite
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_show_detail)
         managementCart = ManagementCart(this)
+        managementFavorite = ManagementFavorite(this)
 
         val medicalPic = binding.medicalPic
         val price_txt = binding.priceTxt
@@ -29,6 +32,8 @@ class ShowDetailActivity : AppCompatActivity() {
         val minusCardbtn = binding.minusCardbtn
         val plusCardbtn = binding.plusCardbtn
         val titledetailtxt = binding.titledetailtxt
+        val favorite_btn=binding.favoriteBtn
+        var intFavorite= 0
         // recuperation du bundle
         val obj = intent.getSerializableExtra("object") as RecomendedDomain
         val drawableResourceId = this.resources.getIdentifier(obj.pic,"drawable",this.packageName)
@@ -47,6 +52,22 @@ class ShowDetailActivity : AppCompatActivity() {
         addToCartBtn.setOnClickListener {
             obj.numberInCart = numberOrder
             managementCart.insertProduit(obj)
+        }
+        if(obj.isFavorite){
+            favorite_btn.setImageResource(R.drawable.ic_favorite)
+        }
+        else{
+            favorite_btn.setImageResource(R.drawable.ic_favorite_border)
+        }
+        favorite_btn.setOnClickListener{
+            if(obj.isFavorite){
+                favorite_btn.setImageResource(R.drawable.ic_favorite_border)
+                obj.isFavorite=false
+            }else{
+                favorite_btn.setImageResource(R.drawable.ic_favorite)
+                obj.isFavorite=true
+            }
+            managementFavorite.insertFavorite(obj)
         }
         minusCardbtn.setOnClickListener {
             if (numberOrder > 1){

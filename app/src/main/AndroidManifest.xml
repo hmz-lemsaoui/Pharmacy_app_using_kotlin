@@ -17,6 +17,9 @@
             android:name=".Activity.MainActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.FavoritesActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.UserProfileActivity"
             android:exported="false" />
         <activity

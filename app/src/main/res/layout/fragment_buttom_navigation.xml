@@ -93,6 +93,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/favoriteBtn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
@@ -102,12 +103,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/ic_support" />
+                            app:srcCompat="@drawable/ic_favorite_black" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Support"
+                            android:text="Favorite"
                             android:textAlignment="center"
                             android:textColor="#676767"
                             android:textSize="12sp" />
@@ -124,13 +125,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/ic_settings" />
+                            app:srcCompat="@drawable/ic_support" />
 
                         <TextView
                             android:id="@+id/textView11"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Settings"
+                            android:text="Support"
                             android:textAlignment="center"
                             android:textColor="#676767"
                             android:textSize="12sp" />

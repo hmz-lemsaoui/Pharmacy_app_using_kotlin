@@ -48,14 +48,12 @@ class CartListAdapter(
         val mContext = holder.itemView.context
         val drawableResourceId = mContext.resources.getIdentifier(data.pic,"drawable",mContext.packageName)
         Glide.with(mContext).load(drawableResourceId).into(holder.image_cart)
-
         holder.plusCardbtn.setOnClickListener {
             managementCart.plusNumberProduct(listMedicalSelected,position,object:ChangeNumberItemListener{
                 override fun changed() {
                     notifyDataSetChanged()
                     changeNumberItemListener.changed()
                 }
-
             })
         }
         holder.minusCardbtn.setOnClickListener {
@@ -64,7 +62,6 @@ class CartListAdapter(
                     notifyDataSetChanged()
                     changeNumberItemListener.changed()
                 }
-
             })
         }
     }
