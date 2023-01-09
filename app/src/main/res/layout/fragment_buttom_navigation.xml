@@ -76,17 +76,32 @@
                         android:layout_weight="0.2"
                         android:orientation="vertical"
                         android:visibility="visible">
-
-                        <ImageView
+                        <RelativeLayout
+                            android:layout_marginTop="4dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/bottom_btn5" />
-
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/bottom_btn5" />
+                            <TextView
+                                android:id="@+id/itemCountCard"
+                                android:layout_width="18sp"
+                                android:textAlignment="center"
+                                android:layout_height="18sp"
+                                android:textColor="@android:color/white"
+                                android:text="0"
+                                android:textSize="12sp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/itemcount" />
+                        </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Cart"
+                            android:text="Card"
                             android:textAlignment="center"
                             android:textColor="#676767"
                             android:textSize="12sp" />
@@ -99,11 +114,28 @@
                         android:layout_weight="0.2"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <RelativeLayout
+                            android:layout_marginTop="4dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/ic_favorite_black" />
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_favorite_black" />
+                            <TextView
+                                android:id="@+id/itemCountFavorite"
+                                android:layout_width="18sp"
+                                android:textAlignment="center"
+                                android:layout_height="18sp"
+                                android:textColor="@android:color/white"
+                                android:text="0"
+                                android:textSize="12sp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="18dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/itemcount" />
+                        </RelativeLayout>
 
                         <TextView
                             android:layout_width="match_parent"

@@ -21,7 +21,6 @@ class CartActivity : AppCompatActivity() {
         binding= DataBindingUtil.setContentView(this,R.layout.activity_cart)
         managementCart = ManagementCart(this)
         initList()
-        // buttomNavigation()
         calculateCard()
 
     }
@@ -77,19 +76,22 @@ class CartActivity : AppCompatActivity() {
         // Attach the item touch helper to your RecyclerView
         itemTouchHelper.attachToRecyclerView(binding.recyclerViewList)
 
-
         binding.recyclerViewList.adapter = adapter
         testVisible()
     }
     private fun testVisible(){
         val isEmptyCard = binding.isEmptyCard
-        val scrollViewCardList = binding.scrollViewCardList
+
         if (managementCart.getListCart().isEmpty()){
             isEmptyCard.visibility = View.VISIBLE
-            scrollViewCardList.visibility = View.GONE
+            binding.recyclerViewList.visibility = View.GONE
+            binding.checkout.visibility = View.GONE
+            binding.facture.visibility = View.GONE
         }else{
             isEmptyCard.visibility = View.GONE
-            scrollViewCardList.visibility = View.VISIBLE
+            binding.recyclerViewList.visibility = View.VISIBLE
+            binding.checkout.visibility = View.VISIBLE
+            binding.facture.visibility = View.VISIBLE
         }
     }
 }

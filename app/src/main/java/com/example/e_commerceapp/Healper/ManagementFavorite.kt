@@ -39,5 +39,8 @@ class ManagementFavorite (
         tinyDB.putListObject("FavoriteList",listProduitsFavorite)
         changeNumberItemListener.changed()
     }
+    fun getNumberOfItemInFavorite():Int{
+        return getListFavorite().size
+    }
 
 }

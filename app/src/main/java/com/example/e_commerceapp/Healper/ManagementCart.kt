@@ -57,4 +57,8 @@ class ManagementCart (
         }
         return fee
     }
+
+    fun getNumberOfItemInCard():Int{
+        return getListCart().size
+    }
 }
