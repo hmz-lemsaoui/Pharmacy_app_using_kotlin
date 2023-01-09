@@ -20,16 +20,18 @@ import com.example.e_commerceapp.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
     lateinit var binding : ActivityHomeBinding
-    lateinit var data:ArrayList<RecomendedDomain>
+    lateinit var dataRecAdapter:ArrayList<RecomendedDomain>
+    private val db = DbHelper(this)
+    lateinit var recomendedAdapter: RecomendedAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_home)
-        recyclerViewCategory()
         recyclerViewPopular()
+        recyclerViewCategory()
         binding.seeAll.setOnClickListener{
             val intent= Intent(this@HomeActivity, ProduitsActivity::class.java)
             val bundle=Bundle()
-            bundle.putSerializable("data",data)
+            bundle.putSerializable("data",dataRecAdapter)
             intent.putExtras(bundle)
             startActivity(intent)
         }
@@ -38,25 +40,20 @@ class HomeActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("userinfos", Context.MODE_PRIVATE)
         val username = sharedPref.getString("username","username")
         val userimage = sharedPref.getInt("image",R.drawable.profile)
-        val id = sharedPref.getInt("id",-1)
         binding.HiName.text="Hi $username"
         binding.imageProfile.setImageResource(userimage)
-
-
-
 
     }
     private fun recyclerViewPopular(){
         val charsearch1 = binding.charsearch1
         val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.recyclerPopularList.layoutManager = manager
-        val db = DbHelper(this)
-        data = db.getAllMedsByCategory("Sachet")
-        val adapter = RecomendedAdapter(data,this)
-        binding.recyclerPopularList.adapter = adapter
+        dataRecAdapter = db.getAllMedsByCategory("Sachet") // recuperation des mediacaments by category
+        recomendedAdapter = RecomendedAdapter(dataRecAdapter,this)
+        binding.recyclerPopularList.adapter = recomendedAdapter
         binding.imgeSearch.setOnClickListener {
             val searchValue = charsearch1.text.toString()
-            adapter.filter.filter(searchValue)
+            recomendedAdapter.filter.filter(searchValue)
         }
 
     }
@@ -65,14 +62,16 @@ class HomeActivity : AppCompatActivity() {
         val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.recyclreCategorieList.layoutManager = manager
         val data = listOf(
-            CategoryDomain("Comprimé","ic_image"),
-            CategoryDomain("Gélule","capsule"),
-            CategoryDomain("Ovule!Caps","ic_image3"),
-            CategoryDomain("Sirop","sirop"),
             CategoryDomain("Sachet","sachet"),
+            CategoryDomain("Sirop","sirop"),
+            CategoryDomain("Gélule","capsule"),
+            CategoryDomain("Comprimé","ic_image8"),
             CategoryDomain("Vitamin","ic_image11"),
+            CategoryDomain("Ovule!Caps","ic_image3"),
         )
-        val adapter = CategoryAdapter(data)
+        // ici on passe le manger de recycler view pour qu'on puise
+        // recupere le view attribue a une position bien determine
+        val adapter = CategoryAdapter(data,manager,recomendedAdapter,dataRecAdapter,this)
         binding.recyclreCategorieList.adapter = adapter
     }
     fun showPopup(view: View) {

@@ -1,5 +1,6 @@
 package com.example.e_commerceapp.Activity
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -14,6 +15,7 @@ class ShowDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityShowDetailBinding
     lateinit var managementCart: ManagementCart
     lateinit var managementFavorite: ManagementFavorite
+    lateinit var mediaPlayer: MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_show_detail)
@@ -33,6 +35,9 @@ class ShowDetailActivity : AppCompatActivity() {
         val plusCardbtn = binding.plusCardbtn
         val titledetailtxt = binding.titledetailtxt
         val favorite_btn=binding.favoriteBtn
+
+        mediaPlayer = MediaPlayer.create(this , R.raw.add_to_card)
+
         var intFavorite= 0
         // recuperation du bundle
         val obj = intent.getSerializableExtra("object") as RecomendedDomain
@@ -52,6 +57,7 @@ class ShowDetailActivity : AppCompatActivity() {
         addToCartBtn.setOnClickListener {
             obj.numberInCart = numberOrder
             managementCart.insertProduit(obj)
+            mediaPlayer.start()
         }
         if(obj.isFavorite){
             favorite_btn.setImageResource(R.drawable.ic_favorite)
