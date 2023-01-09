@@ -18,7 +18,6 @@ import com.example.e_commerceapp.Healper.DbHelper
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityHomeBinding
 
-
 class HomeActivity : AppCompatActivity() {
     lateinit var binding : ActivityHomeBinding
     lateinit var data:ArrayList<RecomendedDomain>
@@ -36,12 +35,11 @@ class HomeActivity : AppCompatActivity() {
         }
         //afficher le nom de user
 
-
         val sharedPref = getSharedPreferences("userinfos", Context.MODE_PRIVATE)
         val username = sharedPref.getString("username","username")
         val userimage = sharedPref.getInt("image",R.drawable.profile)
         val id = sharedPref.getInt("id",-1)
-        binding.HiName.text="Hi $username $id"
+        binding.HiName.text="Hi $username"
         binding.imageProfile.setImageResource(userimage)
 
 
@@ -53,7 +51,7 @@ class HomeActivity : AppCompatActivity() {
         val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.recyclerPopularList.layoutManager = manager
         val db = DbHelper(this)
-        data = db.getAllMeds()
+        data = db.getAllMedsByCategory("Sachet")
         val adapter = RecomendedAdapter(data,this)
         binding.recyclerPopularList.adapter = adapter
         binding.imgeSearch.setOnClickListener {
@@ -67,17 +65,12 @@ class HomeActivity : AppCompatActivity() {
         val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.recyclreCategorieList.layoutManager = manager
         val data = listOf(
-            CategoryDomain("test","ic_image1"),
-            CategoryDomain("test2","ic_image2"),
-            CategoryDomain("test3","ic_image3"),
-            CategoryDomain("test4","ic_image4"),
-            CategoryDomain("test5","ic_image5"),
-            CategoryDomain("test5","ic_image6"),
-            CategoryDomain("test5","ic_image7"),
-            CategoryDomain("test5","ic_image8"),
-            CategoryDomain("test5","ic_image9"),
-            CategoryDomain("test5","ic_image10"),
-            CategoryDomain("test5","ic_image11")
+            CategoryDomain("Comprimé","ic_image"),
+            CategoryDomain("Gélule","capsule"),
+            CategoryDomain("Ovule!Caps","ic_image3"),
+            CategoryDomain("Sirop","sirop"),
+            CategoryDomain("Sachet","sachet"),
+            CategoryDomain("Vitamin","ic_image11"),
         )
         val adapter = CategoryAdapter(data)
         binding.recyclreCategorieList.adapter = adapter

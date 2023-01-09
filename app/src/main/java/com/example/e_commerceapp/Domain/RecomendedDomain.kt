@@ -13,5 +13,5 @@ data class RecomendedDomain(
     val calories: Int,
     var numberInCart: Int,
     var isFavorite: Boolean = false,
-    var category:String="category1"
+    var category:String="Sachet"
     ): Serializable

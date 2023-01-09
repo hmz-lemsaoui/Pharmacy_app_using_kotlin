@@ -40,6 +40,7 @@ class FavoriteAdapter(
         val imageFavorite = binding.imageFavorite
         val titleFavorite = binding.titleFavorite
         val description=binding.descriptionFavorite
+        val star=binding.star
         val feeFavorite = binding.feeFavorite
         val btn_remove_favorite = binding.removeFavorite
     }
@@ -54,20 +55,21 @@ class FavoriteAdapter(
         val data = listProduitsFiltrer[position]
         holder.titleFavorite.text = data.title
         holder.description.text=data.description
+        holder.star.text=data.star.toString()
         holder.feeFavorite.text = "${data.fee} MAD"
 
         val mContext = holder.itemView.context
         val drawableResourceId = mContext.resources.getIdentifier(data.pic,"drawable",mContext.packageName)
         Glide.with(mContext).load(drawableResourceId).into(holder.imageFavorite)
 
-        holder.btn_remove_favorite.setOnClickListener {
-            if(data.isFavorite){
-                holder.btn_remove_favorite.setImageResource(R.drawable.ic_favorite_border)
-            }else{
-                holder.btn_remove_favorite.setImageResource(R.drawable.ic_favorite)
-            }
-            managementFavorite.insertFavorite(listProduitsFiltrer[position])
-        }
+//        holder.btn_remove_favorite.setOnClickListener {
+//            if(data.isFavorite){
+//                holder.btn_remove_favorite.setImageResource(R.drawable.ic_favorite_border)
+//            }else{
+//                holder.btn_remove_favorite.setImageResource(R.drawable.ic_favorite)
+//            }
+//            managementFavorite.insertFavorite(listProduitsFiltrer[position])
+//        }
 
         holder.titleFavorite.setOnClickListener {
             val intent = Intent(holder.itemView.context, ShowDetailActivity::class.java)
@@ -81,6 +83,9 @@ class FavoriteAdapter(
                     Pair.create(binding.imageFavorite, "imageTransition"),
                     Pair.create(binding.descriptionFavorite, "descriptionTransition"),
                     Pair.create(binding.feeFavorite, "priceTransition"))
+                    Pair.create(binding.star,"starTransition")
+                    Pair.create(binding.removeFavorite,"favoriteTransition")
+
             holder.itemView.context.startActivity(intent,options.toBundle())
         }
     }

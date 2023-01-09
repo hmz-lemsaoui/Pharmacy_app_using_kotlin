@@ -14,11 +14,12 @@
             android:id="@+id/imageFavorite"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:scaleType="centerCrop"
             android:transitionName="imageTransition"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_image6" />
+            app:srcCompat="@drawable/image1" />
 
         <TextView
             android:id="@+id/titleFavorite"
@@ -84,9 +85,12 @@
             app:layout_constraintEnd_toStartOf="@+id/imageFavorite">
 
             <TextView
+                android:id="@+id/star"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:text="8.9"
+                android:transitionName="starTransition"
+                android:textAlignment="textEnd"
                 android:textStyle="bold"
                 android:textColor="#FFC107"/>
 
@@ -102,6 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:transitionName="favoriteTransition"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_favorite" />

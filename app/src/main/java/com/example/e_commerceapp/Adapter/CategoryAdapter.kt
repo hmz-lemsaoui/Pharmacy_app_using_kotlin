@@ -1,5 +1,6 @@
 package com.example.e_commerceapp.Adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.example.e_commerceapp.databinding.ItemCategoryBinding
 
 class CategoryAdapter(
     val categoryList: List<CategoryDomain>
+
 ) : RecyclerView.Adapter<CategoryAdapter.MyViewHolder>() {
     lateinit var binding: ItemCategoryBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -24,22 +26,23 @@ class CategoryAdapter(
         holder.textOfCategory.text = data.title
         var pic_url = ""
         when(position){
-            0 -> pic_url="ic_image1"
-            1 -> pic_url="ic_image2"
+            0 -> pic_url="ic_image10"
+            1 -> pic_url="capsule"
             2 -> pic_url="ic_image3"
-            3 -> pic_url="ic_image4"
-            4 -> pic_url="ic_image5"
-            5 -> pic_url="ic_image6"
-            6 -> pic_url="ic_image7"
-            7 -> pic_url="ic_image8"
-            8 -> pic_url="ic_image9"
-            9 -> pic_url="ic_image10"
-            10 -> pic_url="ic_image11"
-            11 -> pic_url="ic_image12"
+            3 -> pic_url="sirop"
+            4 -> pic_url="sachet"
+            5 -> pic_url="ic_image11"
         }
         val mContext = holder.itemView.context
+
+
         val drawableResourceId = mContext.resources.getIdentifier(pic_url,"drawable",mContext.packageName)
         Glide.with(mContext).load(drawableResourceId).into(holder.imageOfCategory)
+        holder.itemView.setOnClickListener{
+            holder.itemView.setBackgroundResource(R.drawable.backgound_category2)
+
+        }
+
     }
 
     override fun getItemCount(): Int {

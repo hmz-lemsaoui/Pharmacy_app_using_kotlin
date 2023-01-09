@@ -13,18 +13,20 @@
             android:layout_width="0dp"
             android:layout_height="345dp"
             android:layout_margin="8dp"
+            android:scaleType="centerCrop"
             android:textAlignment="center"
             android:transitionName="imageTransition"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_image3" />
+            app:srcCompat="@drawable/image1" />
 
         <ImageView
             android:id="@+id/favorite_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:transitionName="favoriteTransition"
             app:layout_constraintBottom_toBottomOf="@+id/medicalPic"
             app:layout_constraintEnd_toEndOf="@+id/medicalPic"
             app:srcCompat="@drawable/ic_favorite_border" />
@@ -171,6 +173,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="4.9"
+                        android:transitionName="starTransition"
                         android:textColor="#373b54"
                         android:textSize="15dp"
                         android:textStyle="bold" />
