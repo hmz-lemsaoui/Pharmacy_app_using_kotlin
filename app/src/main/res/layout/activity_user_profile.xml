@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <View
                     android:id="@+id/view"
                     android:layout_width="wrap_content"
@@ -32,6 +33,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:id="@+id/back3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="?attr/actionModeCloseDrawable" />
 
                 <ImageView
                     android:id="@+id/imageprofile"
@@ -51,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="saramanson@gmail.com"
                     android:textColor="#ffffff"
+                    android:fontFamily="@font/ibm_plex_sans_light"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/username"
                     app:layout_constraintStart_toStartOf="@+id/username"
@@ -63,8 +74,8 @@
                     android:layout_marginTop="16dp"
                     android:text="Sara Manson"
                     android:textColor="#ffffff"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
                     app:layout_constraintEnd_toEndOf="@+id/imageprofile"
                     app:layout_constraintStart_toStartOf="@+id/imageprofile"
                     app:layout_constraintTop_toBottomOf="@+id/imageprofile" />
@@ -122,10 +133,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
                                 android:text="Payment"
+                                android:fontFamily="@font/ibm_plex_sans_bold"
                                 android:textAlignment="center"
                                 android:textColor="#000000"
-                                android:textSize="13dp"
-                                android:textStyle="bold" />
+                                android:textSize="13dp"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -163,7 +174,7 @@
                                 android:textAlignment="center"
                                 android:textColor="#000000"
                                 android:textSize="13dp"
-                                android:textStyle="bold" />
+                                android:fontFamily="@font/ibm_plex_sans_bold"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -197,6 +208,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
                                 android:text="Notification"
+                                android:fontFamily="@font/ibm_plex_sans_bold"
                                 android:textAlignment="center"
                                 android:textColor="#000000"
                                 android:textSize="13dp"
@@ -211,12 +223,13 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="5dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:fontFamily="@font/ibm_plex_sans_bold"
                             android:text="Password: "
                             android:textColor="@color/color1"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
                         <EditText
                             android:id="@+id/password"
                             android:background="@android:color/transparent"
@@ -224,6 +237,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="*********"
+                            android:fontFamily="@font/ibm_plex_sans_bold"
                             android:textAlignment="textEnd"
                             android:textSize="16dp"/>
 
@@ -250,8 +264,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Mobile: "
+                            android:fontFamily="@font/ibm_plex_sans_bold"
                             android:textColor="@color/color1"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
 
                         <EditText
                             android:id="@+id/mobile"
@@ -260,6 +275,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="your phone"
+                            android:fontFamily="@font/ibm_plex_sans_bold"
                             android:textAlignment="textEnd"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -287,8 +303,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Adress: "
+                            android:fontFamily="@font/ibm_plex_sans_bold"
                             android:textColor="@color/color1"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
 
                         <EditText
                             android:id="@+id/adress"
@@ -297,6 +314,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="Adress"
+                            android:fontFamily="@font/ibm_plex_sans_bold"
                             android:textAlignment="textEnd"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -323,7 +341,8 @@
                             android:layout_weight="1"
                             android:text="PostalCode:"
                             android:textColor="@color/color1"
-                            android:textSize="18sp" />
+                            android:fontFamily="@font/ibm_plex_sans_bold"
+                            android:textSize="16sp" />
 
                         <EditText
                             android:id="@+id/code"
@@ -332,6 +351,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:hint="Code Postal"
+                            android:fontFamily="@font/ibm_plex_sans_bold"
                             android:textAlignment="textEnd"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -345,7 +365,7 @@
                 android:layout_height="50dp"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 style="@android:style/Widget.Button"
                 android:layout_margin="24dp"
                 android:background="@drawable/button"

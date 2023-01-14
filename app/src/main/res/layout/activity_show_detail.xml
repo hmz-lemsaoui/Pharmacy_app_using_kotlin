@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#f6f7fb"
+        android:background="#F6F6F6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Activity.ShowDetailActivity">
@@ -48,30 +48,43 @@
                 android:layout_marginTop="16dp"
                 android:text="Title"
                 android:textAlignment="center"
-                android:textColor="#373b54"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:transitionName="titleTransition" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="230dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="8dp"
-                android:background="@drawable/bleu_bar">
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:gravity="top"
+                    android:text="$"
+                    android:textColor="#000000"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/price_txt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/price_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 MAD"
+                    android:text="12.0"
                     android:textColor="#000000"
                     android:textSize="18sp"
-
+                    android:fontFamily="@font/ibm_plex_sans_bold"
                     android:transitionName="priceTransition"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout4"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView19"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,7 +108,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/minus" />
+                        app:srcCompat="@drawable/ic_minus" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout3"
@@ -148,9 +161,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
@@ -163,20 +176,21 @@
                     <ImageView
                         android:id="@+id/imageView4"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
+                        android:scaleType="fitCenter"
                         app:srcCompat="@drawable/ic_star" />
 
                     <TextView
                         android:id="@+id/startxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
                         android:gravity="center_vertical"
                         android:text="4.9"
-                        android:transitionName="starTransition"
-                        android:textColor="#373b54"
+                        android:textColor="#FF8C41"
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:transitionName="starTransition" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -193,11 +207,11 @@
                     <TextView
                         android:id="@+id/timetxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text=" 20 min"
-                        android:textColor="#373b54"
+                        android:textColor="#000000"
                         android:textSize="15dp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -216,13 +230,13 @@
                     <TextView
                         android:id="@+id/textViCaloriestxt"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
                         android:gravity="center_vertical"
-                        android:text="70 calories"
-                        android:textColor="#373b54"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:text="70 cal"
+                        android:textColor="#000000"
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -232,8 +246,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:text="Description"
+                android:fontFamily="@font/ibm_plex_sans_light"
+                android:textStyle="bold"
                 android:textColor="#606060"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -252,26 +268,26 @@
                         android:id="@+id/totalPricetxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="$19.50"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="109.50"
                         android:textColor="#000000"
-                        android:textSize="23sp"
-                        android:textStyle="bold"
+                        android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.533" />
 
                     <TextView
-                        android:id="@+id/textView22"
+                        android:id="@+id/totalPricetxt2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Total Price"
-                        android:textColor="#373b54"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="$"
+                        android:textColor="#000000"
                         android:textSize="15sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintEnd_toStartOf="@+id/totalPricetxt"
+                        app:layout_constraintTop_toTopOf="@+id/totalPricetxt" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -282,15 +298,16 @@
                     android:layout_margin="8dp"
                     android:layout_weight="0.5"
                     android:background="@drawable/yellow_btn_background"
-                    android:drawableStart="@drawable/cart_white"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:drawableStart="@drawable/ic_cart"
                     android:drawablePadding="5dp"
                     android:elevation="3dp"
                     android:gravity="center"
-                    android:padding="8dp"
                     android:text="Add To Cart"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/ibm_plex_sans_bold" />
             </LinearLayout>
         </LinearLayout>
         <androidx.fragment.app.FragmentContainerView

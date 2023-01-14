@@ -24,10 +24,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="20dp"
-            android:textColor="#47274f"
-            android:text="Login"
+            android:textColor="#000000"
+            android:text="Login To ASAFAR"
             android:textSize="26sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/ibm_plex_sans_bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -39,6 +39,8 @@
             android:layout_marginTop="10dp"
             android:text="Please Sign in to continue."
             android:textColor="#000000"
+            android:fontFamily="@font/ibm_plex_sans_light"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -71,6 +73,7 @@
                 android:layout_weight="1"
                 android:paddingTop="2dp"
                 android:text="EMAIL"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:textColor="#000000"
                 app:layout_constraintStart_toEndOf="@+id/imageemail"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -87,7 +90,7 @@
                 android:textColor="#000000"
                 android:textColorHint="@color/grey"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageemail"
@@ -127,6 +130,7 @@
                 android:layout_weight="1"
                 android:paddingTop="2dp"
                 android:text="PASSWORD"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:textColor="#000000"
                 app:layout_constraintStart_toEndOf="@+id/imagepassword"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -143,7 +147,7 @@
                 android:textColor="#000000"
                 android:textColorHint="@color/grey"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imagepassword"
@@ -162,7 +166,7 @@
             android:paddingBottom="15dp"
             android:text="LOGIN"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/ibm_plex_sans_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txterror" />
@@ -170,7 +174,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -181,6 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account?"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:textColor="#000000" />
 
             <TextView
@@ -188,9 +193,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sign up"
-                android:textColor="#dfb16d"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:text="Swipe to Right ▶"
+                android:fontFamily="@font/ibm_plex_sans_bold"
+                android:textColor="#3A8891" />
         </LinearLayout>
 
         <TextView
@@ -199,6 +205,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:visibility="gone"
+            android:textColor="#E91E63"
+            android:fontFamily="@font/ibm_plex_sans_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />

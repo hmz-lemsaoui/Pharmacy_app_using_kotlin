@@ -3,10 +3,33 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:background="#f6f7fb"
+    android:background="#f6f6f6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.CartActivity">
+    <ImageView
+        android:id="@+id/back4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/ibm_plex_sans_bold"
+        android:text="My Cart"
+        android:textAlignment="viewStart"
+        android:textColor="#3A8891"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back4" />
 
     <TextView
         android:id="@+id/isEmptyCard"
@@ -15,7 +38,7 @@
         android:text="Your Cart is Empty"
         android:textColor="#000000"
         android:textSize="16dp"
-        android:textStyle="bold"
+        android:fontFamily="@font/ibm_plex_sans_bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/scrollViewCardList"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,36 +49,22 @@
         android:id="@+id/scrollViewCardList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:paddingStart="16dp"
-                android:text="My Cart"
-                android:textAlignment="viewStart"
-                android:textColor="#dfb16d"
-                android:textSize="20sp"
-
-                android:textStyle="bold" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
             <LinearLayout
                 android:id="@+id/facture"
@@ -67,6 +76,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
@@ -78,19 +88,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
                         android:text="Items Total:"
-                        android:textColor="#373b54"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:gravity="top"
+                        android:text="$"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/totalItemCard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$0"
-                        android:textColor="#373b54"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="120.9"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -107,19 +126,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Delivery Services"
-                        android:textColor="#373b54"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="Delivery Services:"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="$"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/delivryCard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$0"
-                        android:textColor="#373b54"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="12.0"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,19 +162,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Tax"
-                        android:textColor="#373b54"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="Tax:"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="$"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/taxCard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$0"
-                        android:textColor="#373b54"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="10.1"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <view
@@ -166,6 +201,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
+
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="4dp"
                     android:orientation="horizontal">
@@ -174,19 +210,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Total"
-                        android:textColor="#373b54"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="Total:"
+                        android:textColor="#4F55AD"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/unite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+
+                        android:text="$"
+                        android:textColor="#4F55AC"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/totalCard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$0"
-                        android:textColor="#373b54"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/ibm_plex_sans_bold"
+                        android:text="240.0"
+                        android:textColor="#FF4F55AC"
+                        android:textSize="30sp" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -206,10 +253,10 @@
                     android:layout_margin="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
                     android:text="Check Out"
                     android:textColor="@color/white"
                     android:textSize="25sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

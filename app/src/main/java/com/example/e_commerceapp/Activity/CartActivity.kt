@@ -34,10 +34,10 @@ class CartActivity : AppCompatActivity() {
         var tax = Math.round(managementCart.getTotalFee() * parencentTax *100.0)/ 100.0
         var total = Math.round((managementCart.getTotalFee() + tax + delivery)*100.0) /100.0
         var totalItem = Math.round(managementCart.getTotalFee()*100.0)/100.0
-        totalItemCard.text = "$$totalItem"
-        delivryCard.text = "$$delivery"
-        taxCard.text = "$$tax"
-        totalCard.text = "$$total"
+        totalItemCard.text = "$totalItem"
+        delivryCard.text = "$delivery"
+        taxCard.text = "$tax"
+        totalCard.text = "$total"
     }
     fun initList(){
         val manager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)

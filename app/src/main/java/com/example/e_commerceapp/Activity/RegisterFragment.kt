@@ -39,18 +39,18 @@ class RegisterFragment : Fragment() {
         var password = binding.password.text.toString()
         var confPassword = binding.confirmation.text.toString()
         if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confPassword.isEmpty()) {
-            txterror.text = "tous les champs sont obligatoires"
+            txterror.text = "⁉ You Must Fill All The Fields"
             txterror.visibility = View.VISIBLE
         } else if (password != confPassword) {
-            txterror.text = "les mots de passe sont differents"
+            txterror.text = "⁉ The Passwords Are Different"
             txterror.visibility = View.VISIBLE
         } else if (db.checkIfEmailExist(email)) {
-            txterror.text = "user with this email exist already"
+            txterror.text = "⁉ User With This E-mail Already Exists"
             txterror.visibility = View.VISIBLE
         } else {
             val result = db.insertUser(User(name = name,email=email,password = password))
             if (!result){
-                txterror.text = "try again !"
+                txterror.text = "⁉ Try Again !"
                 txterror.visibility = View.VISIBLE
             }else{
                 Toast.makeText(context, "successfully registered", Toast.LENGTH_SHORT).show()

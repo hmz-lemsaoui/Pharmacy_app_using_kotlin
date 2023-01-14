@@ -11,11 +11,11 @@
 
     <ImageView
         android:id="@+id/imageRecomended"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="centerCrop"
         android:transitionName="imageTransition"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +27,11 @@
         android:id="@+id/titleRecomended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="title"
-        android:transitionName="titleTransition"
         android:textColor="#373B54"
-        android:textStyle="bold"
+        android:fontFamily="@font/ibm_plex_sans_bold"
+        android:transitionName="titleTransition"
         app:layout_constraintEnd_toEndOf="@+id/imageRecomended"
         app:layout_constraintStart_toStartOf="@+id/imageRecomended"
         app:layout_constraintTop_toBottomOf="@+id/imageRecomended" />
@@ -39,14 +40,13 @@
         android:id="@+id/fee_recomended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/ibm_plex_sans_bold"
         android:text="$0.0"
-        android:transitionName="priceTransition"
         android:textColor="#373B54"
-        android:textStyle="bold"
+        android:transitionName="priceTransition"
         app:layout_constraintBottom_toBottomOf="@+id/btn_add_to_card"
-        app:layout_constraintEnd_toStartOf="@+id/btn_add_to_card"
-        app:layout_constraintStart_toStartOf="@+id/imageRecomended"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_add_to_card" />
 
     <ImageView
@@ -54,9 +54,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageRecomended"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleRecomended"
         app:srcCompat="@drawable/ic_plus_circle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

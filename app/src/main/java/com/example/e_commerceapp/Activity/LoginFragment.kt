@@ -36,12 +36,12 @@ class LoginFragment : Fragment() {
         var texterror = binding.txterror
         val db = DbHelper(requireContext())
         if (email.isEmpty() || password.isEmpty()){
-            texterror.text = "vous devez remplir tous les champs"
+            texterror.text = "⁉ You Must Fill All The Fields"
             texterror.visibility = View.VISIBLE
         }else{
             val user = db.verifyLogin(User(email = email,password = password))
             if (user == null){
-                texterror.text = "Email ou password n'est correct"
+                texterror.text = "⁉ Email Or Password Is Not Correct"
                 texterror.visibility = View.VISIBLE
             }else{
                 Toast.makeText(context, "successfully registered", Toast.LENGTH_SHORT).show()

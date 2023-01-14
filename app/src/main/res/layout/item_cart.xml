@@ -12,17 +12,45 @@
     android:background="@drawable/card_background">
 
     <TextView
+        android:id="@+id/totalEachItem"
+        android:layout_width="63dp"
+        android:layout_height="23dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/ibm_plex_sans_bold"
+        android:text="240.00"
+        android:textColor="#4F55AD"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/unite" />
+
+    <TextView
         android:id="@+id/feeEachItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="$0"
-        android:textColor="#373b54"
-        android:textSize="18sp"
+        android:fontFamily="@font/ibm_plex_sans_bold"
+        android:text="12.0"
+        android:textColor="#000000"
+        android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/title_cart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title_cart" />
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout4"
+        app:layout_constraintTop_toTopOf="@+id/title_cart"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/feeEachItem2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ibm_plex_sans_bold"
+        android:text="$"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/title_cart"
+        app:layout_constraintEnd_toStartOf="@+id/feeEachItem"
+        app:layout_constraintTop_toTopOf="@+id/title_cart"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/image_cart"
@@ -37,81 +65,84 @@
 
     <TextView
         android:id="@+id/title_cart"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/ibm_plex_sans_bold"
         android:text="title"
         android:textColor="#373b54"
         android:textSize="18sp"
-        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/feeEachItem2"
         app:layout_constraintStart_toEndOf="@+id/image_cart"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/totalEachItem"
+        android:id="@+id/unite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$0"
-        android:textColor="#373b54"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
-        app:layout_constraintEnd_toEndOf="@+id/feeEachItem"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout4" />
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/ibm_plex_sans_bold"
+        android:text="$"
+        android:textColor="#4F55AD"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/image_cart"
+        app:layout_constraintTop_toTopOf="@+id/totalEachItem" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/yellow_bar"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/title_cart"
-        app:layout_constraintTop_toBottomOf="@+id/title_cart">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/minusCardbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/minus" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+            app:srcCompat="@drawable/ic_moins_circle" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintBottom_toTopOf="@+id/minusCardbtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/plusCardbtn">
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/white_circle" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/numberItemtxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
-                android:textColor="#373b54"
-                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-                app:layout_constraintEnd_toEndOf="@+id/imageView7"
-                app:layout_constraintStart_toStartOf="@+id/imageView7"
-                app:layout_constraintTop_toTopOf="@+id/imageView7" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -119,13 +150,12 @@
             android:id="@+id/plusCardbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_plus" />
+            app:srcCompat="@drawable/ic_plus_circle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

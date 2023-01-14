@@ -7,12 +7,14 @@
             android:id="@+id/coordinatorLayout"
             android:layout_width="match_parent"
             android:layout_height="58dp"
+            android:backgroundTintMode="add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/app_bar"
+                android:theme="@style/BottomAppBarOverlay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -37,12 +39,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/bottom_btn1" />
+                            app:srcCompat="@drawable/ic_home" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Home"
+                            android:fontFamily="@font/ibm_plex_sans_light"
+                            android:textStyle="bold"
                             android:textAlignment="center"
                             android:textColor="#676767"
                             android:textSize="12sp" />
@@ -58,12 +62,15 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             app:srcCompat="@drawable/ic_user" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Profile"
+                            android:fontFamily="@font/ibm_plex_sans_light"
+                            android:textStyle="bold"
                             android:textAlignment="center"
                             android:textColor="#676767"
                             android:textSize="12sp" />
@@ -80,10 +87,11 @@
                             android:layout_marginTop="4dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/bottom_btn5" />
+                                app:srcCompat="@drawable/ic_cart" />
                             <TextView
                                 android:id="@+id/itemCountCard"
                                 android:layout_width="18sp"
@@ -94,14 +102,16 @@
                                 android:textSize="12sp"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginStart="18dp"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginStart="14dp"
+                                android:layout_marginTop="0dp"
                                 android:background="@drawable/itemcount" />
                         </RelativeLayout>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Card"
+                            android:text="Cart"
+                            android:fontFamily="@font/ibm_plex_sans_light"
+                            android:textStyle="bold"
                             android:textAlignment="center"
                             android:textColor="#676767"
                             android:textSize="12sp" />
@@ -118,9 +128,11 @@
                             android:layout_marginTop="4dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+
                                 app:srcCompat="@drawable/ic_favorite_black" />
                             <TextView
                                 android:id="@+id/itemCountFavorite"
@@ -132,8 +144,8 @@
                                 android:textSize="12sp"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginStart="18dp"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginStart="14dp"
+                                android:layout_marginTop="0dp"
                                 android:background="@drawable/itemcount" />
                         </RelativeLayout>
 
@@ -147,6 +159,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/supportBtn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
@@ -163,7 +176,9 @@
                             android:id="@+id/textView11"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Support"
+                            android:text="Rate Us"
+                            android:fontFamily="@font/ibm_plex_sans_light"
+                            android:textStyle="bold"
                             android:textAlignment="center"
                             android:textColor="#676767"
                             android:textSize="12sp" />

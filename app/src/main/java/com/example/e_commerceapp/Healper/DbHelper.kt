@@ -13,137 +13,58 @@ import com.example.e_commerceapp.Domain.User
 
 class DbHelper(var context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
-    var data = ArrayList<RecomendedDomain>()
 
-    init {
-        data.apply {
-            add(
-                RecomendedDomain(
-                    "Analgésiques",
-                    "vitamin3",
-                    "Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",
-                    13.0,
-                    5,
-                    20,
-                    100,
-                    1
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Antibiotiques",
-                    "image1",
-                    "Antibiotiques pour les infections",
-                    12.0,
-                    5,
-                    40,
-                    300,
-                    1
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Anti-inflammatoires",
-                    "vitamin2",
-                    "Anti-inflammatoires pour l'inflammation et l'enflure",
-                    19.0,
-                    3,
-                    60,
-                    1100,
-                    1,
-                    category = "Ovule!Caps"
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Antipyrétiques ",
-                    "image2",
-                    "Antipyrétiques pour la fièvre",
-                    12.0,
-                    1,
-                    20,
-                    1020,
-                    1,
-                    category = "Vitamin"
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Antidépresseurs",
-                    "vitamin3",
-                    "Antidépresseurs pour la dépression et l'anxiété",
-                    13.4,
-                    5,
-                    10,
-                    1025,
-                    1,
-                    category = "Sirop"
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Antihistaminiques",
-                    "image1",
-                    "Antihistaminiques pour les allergies",
-                    16.4,
-                    4,
-                    14,
-                    2000,
-                    1
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Diurétiques",
-                    "ic_image10",
-                    "Diurétiques pour l'hypertension artérielle et l'œdème (accumulation de liquide)",
-                    20.9,
-                    3,
-                    80,
-                    5000,
-                    1
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Bêtabloquants",
-                    "ic_image6",
-                    "Bêtabloquants pour l'hypertension artérielle et les problèmes cardiaques",
-                    16.4,
-                    4,
-                    14,
-                    2000,
-                    1
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Statines ",
-                    "ic_image7",
-                    "Statines pour le cholestérol élevé",
-                    16.4,
-                    4,
-                    14,
-                    2000,
-                    1
-                )
-            )
-            add(
-                RecomendedDomain(
-                    "Insuline ",
-                    "ic_image8",
-                    "Insuline pour le diabète",
-                    16.4,
-                    4,
-                    14,
-                    2000,
-                    1
-                )
-            )
-        }
-    }
+
+
 
     override fun onCreate(db: SQLiteDatabase) {
+        var data = ArrayList<RecomendedDomain>()
+        data.apply {
+
+        add(RecomendedDomain("Statines","sachet1", "Sachet","Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",13.0,5,20,100,1))
+        add(RecomendedDomain("Diurétiques","sachet2","Sachet","Antibiotiques pour les infections",14.0,4,20,100,1))
+        add(RecomendedDomain("Statines","sachet3", "Sachet","Insuline pour le diabète",15.0,3,20,100,1))
+        add(RecomendedDomain("Insuline","sachet4", "Sachet","Statines pour le cholestérol élevé",16.0,2,20,100,1))
+        add(RecomendedDomain("Bêtabloquants","sachet5", "Sachet","Bêtabloquants pour l'hypertension artérielle et les problèmes cardiaques",17.0,1,20,100,1))
+        add(RecomendedDomain("Diurétiques","sachet6", "Sachet","Diurétiques pour l'hypertension artérielle et l'œdème (accumulation de liquide)",18.0,5,20,100,1))
+
+        add(RecomendedDomain("Insuline","vitamin1", "Vitamin","Statines pour le cholestérol élevé",16.0,2,20,100,1))
+        add(RecomendedDomain("Bêtabloquants","vitamin2", "Vitamin","Bêtabloquants pour l'hypertension artérielle et les problèmes cardiaques",17.0,1,20,100,1))
+        add(RecomendedDomain("Diurétiques","vitamin3", "Vitamin","Diurétiques pour l'hypertension artérielle et l'œdème (accumulation de liquide)",18.0,5,20,100,1))
+        add(RecomendedDomain("Analgésiques","img12", "Vitamin","Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",13.0,5,20,100,1))
+        add(RecomendedDomain("Antibiotiques","img13","Vitamin","Antibiotiques pour les infections",14.0,4,20,100,1))
+        add(RecomendedDomain("Bêtabloqua","img14", "Vitamin","Bêtabloquants pour l'hypertension artérielle et les problèmes cardiaques",17.0,1,20,100,1))
+        add(RecomendedDomain("Statines","img15", "Vitamin","Bêtabloquants pour l'hypertension artérielle et les problèmes cardiaques",17.0,1,20,100,1))
+
+        add(RecomendedDomain("Insuline","capsule2", "Gélule","Insuline pour le diabète",15.0,3,20,100,1))
+        add(RecomendedDomain("Statines","capsule1", "Gélule","Statines pour le cholestérol élevé",16.0,2,20,100,1))
+        add(RecomendedDomain("Bêtabloquants","img1", "Gélule","Bêtabloquants pour l'hypertension artérielle et les problèmes cardiaques",17.0,1,20,100,1))
+        add(RecomendedDomain("Diurétiques","img2", "Gélule","Diurétiques pour l'hypertension artérielle et l'œdème (accumulation de liquide)",18.0,5,20,100,1))
+        add(RecomendedDomain("Antihistaminiques","img3", "Gélule","Antihistaminiques pour les allergies",19.0,4,20,100,1))
+        add(RecomendedDomain("Diurétiques","img4","Gélule","Antidépresseurs pour la dépression et l'anxiété",20.0,3,20,100,1))
+
+        add(RecomendedDomain("Antipyrétiques","img5", "Comprimé","Antipyrétiques pour la fièvre",21.0,2,20,100,1))
+        add(RecomendedDomain("Statines","img6", "Comprimé","Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",22.0,1,20,100,1))
+        add(RecomendedDomain("Analgésiques","img7", "Comprimé","Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",23.0,5,20,100,1))
+        add(RecomendedDomain("Insuline","img8", "Comprimé","Insuline pour le diabète",15.0,3,20,100,1))
+        add(RecomendedDomain("Statines","img9", "Comprimé","Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",13.0,5,20,100,1))
+        add(RecomendedDomain("Diurétiques","img10","Comprimé","Antibiotiques pour les infections",14.0,4,20,100,1))
+        add(RecomendedDomain("Statines 2","img11", "Comprimé","Insuline pour le diabète",15.0,3,20,100,1))
+
+
+            add(RecomendedDomain("Analgésiques","sirop1", "Sirop","Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",13.0,5,20,100,1))
+            add(RecomendedDomain("Antibiotiques","sirop2","Sirop","Antibiotiques pour les infections",14.0,4,20,100,1))
+            add(RecomendedDomain("Insuline","sirop3", "Sirop","Insuline pour le diabète",15.0,3,20,100,1))
+            add(RecomendedDomain("Statines","sirop4", "Sirop","Statines pour le cholestérol élevé",16.0,2,20,100,1))
+            add(RecomendedDomain("Bêtabloquants","sirop5", "Sirop","Bêtabloquants pour l'hypertension artérielle et les problèmes cardiaques",17.0,1,20,100,1))
+            add(RecomendedDomain("Diurétiques","sirop6", "Sirop","Diurétiques pour l'hypertension artérielle et l'œdème (accumulation de liquide)",18.0,5,20,100,1))
+            add(RecomendedDomain("Antihistaminiques","sirop7", "Sirop","Antihistaminiques pour les allergies",19.0,4,20,100,1))
+            add(RecomendedDomain("Diurétiques","sirop8","Sirop","Antidépresseurs pour la dépression et l'anxiété",20.0,3,20,100,1))
+            add(RecomendedDomain("Antipyrétiques","sirop9", "Sirop","Antipyrétiques pour la fièvre",21.0,2,20,100,1))
+            add(RecomendedDomain("Statines","sirop10", "Sirop","Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",22.0,1,20,100,1))
+            add(RecomendedDomain("Analgésiques","sirop11", "Sirop","Analgésiques (antidouleur) tels que l'acétaminophène et l'ibuprofène",23.0,5,20,100,1))
+
+        }
         db?.execSQL(
             """ CREATE TABLE $TABLE_NAME(
                 $COL_ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -177,7 +98,7 @@ class DbHelper(var context: Context) :
                 put(COL_TITLE, it.title)
                 put(COL_PICTURE, it.pic)
                 put(COL_DISCRIPTION, it.description)
-                put(COL_PRICE, it.fee)
+                put(COL_PRICE, it.price)
                 put(COL_CATEGORY, it.category)
                 put(COL_STAR, it.star)
                 put(COL_TIME, it.time)
@@ -258,15 +179,13 @@ class DbHelper(var context: Context) :
         id: Int,
         mobile: String,
         adress: String,
-        postalCode: String,
-        img: Int
+        postalCode: String
     ) {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(COL_MOBILE, mobile)
             put(COL_ADRESS, adress)
             put(COL_CODE, postalCode)
-            put(COL_IMAGE, img)
         }
         val selection = "$COL_ID = ?"
         val selectionArgs = arrayOf(id.toString())
@@ -279,8 +198,16 @@ class DbHelper(var context: Context) :
         val db = this.readableDatabase
         val cur: Cursor = db.rawQuery(
             """
-                SELECT $COL_ID_MED,$COL_TITLE,$COL_DISCRIPTION,$COL_PRICE,
-                $COL_CATEGORY,$COL_PICTURE,$COL_STAR,$COL_TIME,$COL_NUMBERINCARD,$COL_ISFAVORITE
+                SELECT $COL_ID_MED,
+                $COL_TITLE,
+                $COL_DISCRIPTION,
+                $COL_PRICE,
+                $COL_CATEGORY,
+                $COL_PICTURE,
+                $COL_STAR,
+                $COL_TIME,
+                $COL_NUMBERINCARD,
+                $COL_ISFAVORITE
                 FROM $TABLE_NAME_MED WHERE $COL_CATEGORY=?
             """.trimIndent(),arrayOf(catgory)
         )
@@ -290,12 +217,11 @@ class DbHelper(var context: Context) :
                 fav = true
             medList.add(
                 RecomendedDomain(
-                    cur.getString(1),
-                    cur.getString(5),
-                    cur.getString(2),
+                    cur.getString(1),cur.getString(5),
+                    cur.getString(4),cur.getString(2),
                     cur.getDouble(3), cur.getInt(6),
-                    cur.getInt(7), 0, cur.getInt(8),
-                    fav, cur.getString(4)
+                    cur.getInt(7), 0,
+                    cur.getInt(8),fav
                 )
             )
         }
@@ -303,9 +229,10 @@ class DbHelper(var context: Context) :
         return medList
     }
 
+
     companion object {
         // Database Version
-        private val DATABASE_VERSION = 7
+        private val DATABASE_VERSION = 10
 
         // Database Name
         private val DATABASE_NAME = "DbApp"

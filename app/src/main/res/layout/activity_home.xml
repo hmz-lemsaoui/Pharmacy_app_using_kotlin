@@ -5,7 +5,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f6f7fb"
+    android:background="#F6F6F6"
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context=".Activity.HomeActivity">
@@ -34,11 +34,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="32dp"
-                    android:text="Hi Leonardo"
-                    android:transitionName="nomTransition"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="Hi Leonard 👋"
                     android:textColor="#3A8891"
                     android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:transitionName="nomTransition"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,23 +47,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/ibm_plex_sans_light"
                     android:text="Search and Order"
                     android:textColor="#000000"
-
-                    android:textSize="20sp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/HiName"
                     app:layout_constraintTop_toBottomOf="@+id/HiName" />
 
                 <ImageView
                     android:id="@+id/imageProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="32dp"
+                    android:onClick="showPopup"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/profile"
                     android:transitionName="imageTransition"
-                    android:onClick="showPopup"
                     app:layout_constraintBottom_toBottomOf="@+id/textView3"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,7 +101,7 @@
                         android:text="Up to 49% off"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/ibm_plex_sans_bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
@@ -110,6 +114,8 @@
                         android:text="Jan 12 - Feb 10"
                         android:textColor="#000000"
                         android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/ibm_plex_sans_light"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView6"
                         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -136,6 +142,7 @@
                             android:layout_marginEnd="16dp"
                             android:layout_marginBottom="8dp"
                             android:text="Order Now"
+                            android:fontFamily="@font/ibm_plex_sans_bold"
                             android:textColor="#FFFFFF"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -164,9 +171,8 @@
                     android:layout_height="wrap_content"
                     android:text="Medicines"
                     android:textColor="#000000"
-
+                    android:fontFamily="@font/ibm_plex_sans_bold"
                     android:textSize="18sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/charsearch"
                     app:layout_constraintTop_toBottomOf="@+id/recyclreCategorieList" />
                 <TextView
@@ -175,6 +181,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"
                     android:text="See All"
+                    android:fontFamily="@font/ibm_plex_sans_light"
+                    android:textStyle="bold"
                     android:textColor="#3A8891"
                     app:layout_constraintBottom_toBottomOf="@+id/nameOfCategorySelected"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -210,7 +218,8 @@
                         android:hint="Search Your Favorite Vitamin"
                         android:background="@android:color/transparent"
                         android:inputType="textPersonName"
-                        android:textStyle="italic"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/ibm_plex_sans_light"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imgeSearch"
                         app:layout_constraintStart_toStartOf="parent"
@@ -243,8 +252,7 @@
                     android:text="Categories"
                     android:textColor="#000000"
                     android:textSize="18sp"
-
-                    android:textStyle="bold"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
                     app:layout_constraintStart_toStartOf="@+id/charsearch"
                     app:layout_constraintTop_toBottomOf="@+id/charsearch" />
 

@@ -8,19 +8,7 @@
     android:background="#f6f7fb"
     tools:context=".Activity.FavoritesActivity">
 
-    <TextView
-        android:id="@+id/isEmptyCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Favorites is Empty"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        android:visibility="gone"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
 
     <ImageView
         android:id="@+id/back2"
@@ -39,9 +27,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:text="Liste Of Your Favorites"
-        android:textColor="#000000"
+        android:textColor="#3A8891"
         android:textSize="26sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/ibm_plex_sans_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back2" />
 
@@ -71,6 +59,21 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/isEmptyCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ibm_plex_sans_bold"
+        android:text="Your Favorite is Empty"
+        android:visibility="gone"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewFavoriteList" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
         android:name="com.example.e_commerceapp.ButtomNavigationFragment"

@@ -1,5 +1,6 @@
 package com.example.e_commerceapp.Adapter
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
@@ -51,12 +52,13 @@ class FavoriteAdapter(
         return MyViewHolder(layout)
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listProduitsFiltrer[position]
         holder.titleFavorite.text = data.title
         holder.description.text=data.description
         holder.star.text=data.star.toString()
-        holder.feeFavorite.text = "${data.fee} MAD"
+        holder.feeFavorite.text = "${data.price}"
 
         val mContext = holder.itemView.context
         val drawableResourceId = mContext.resources.getIdentifier(data.pic,"drawable",mContext.packageName)

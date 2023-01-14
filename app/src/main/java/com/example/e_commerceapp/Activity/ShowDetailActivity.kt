@@ -43,14 +43,14 @@ class ShowDetailActivity : AppCompatActivity() {
         val obj = intent.getSerializableExtra("object") as RecomendedDomain
         val drawableResourceId = this.resources.getIdentifier(obj.pic,"drawable",this.packageName)
         Glide.with(this).load(drawableResourceId).into(medicalPic)
-        price_txt.text = "$${obj.fee}"
+        price_txt.text = "${obj.price}"
         titledetailtxt.text = obj.title
         descriptiontxt.text = obj.description
         numberItemtxt.text = obj.numberInCart.toString()
         startxt.text = obj.star.toString()
         timetxt.text = obj.time.toString()
         textVi_caloriestxt.text = obj.calories.toString()
-        totalPricetxt.text = "$${Math.round(obj.fee * obj.numberInCart)}"
+        totalPricetxt.text = "${Math.round(obj.price * obj.numberInCart)}"
 
         var numberOrder = numberItemtxt.text.toString().toInt()
 
@@ -80,12 +80,12 @@ class ShowDetailActivity : AppCompatActivity() {
                 numberOrder -= 1
             }
             numberItemtxt.text = numberOrder.toString()
-            totalPricetxt.text = "$${Math.round(obj.fee * numberOrder)}"
+            totalPricetxt.text = "${Math.round(obj.price * numberOrder)}"
         }
         plusCardbtn.setOnClickListener {
             numberOrder += 1
             numberItemtxt.text = numberOrder.toString()
-            totalPricetxt.text = "$${Math.round(obj.fee * numberOrder)}"
+            totalPricetxt.text = "${Math.round(obj.price * numberOrder)}"
         }
     }
 }

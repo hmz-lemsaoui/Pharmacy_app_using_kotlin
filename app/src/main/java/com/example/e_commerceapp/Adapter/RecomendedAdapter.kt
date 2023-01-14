@@ -48,7 +48,7 @@ class RecomendedAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listProduitsFiltrer[position]
         holder.titleRecomended.text = data.title
-        holder.feeRecomended.text = "$${data.fee}"
+        holder.feeRecomended.text = "${data.price}$"
 
         val mContext = holder.itemView.context
         val drawableResourceId = mContext.resources.getIdentifier(data.pic,"drawable",mContext.packageName)

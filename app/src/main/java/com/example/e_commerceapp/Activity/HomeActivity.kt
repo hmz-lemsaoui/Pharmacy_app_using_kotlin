@@ -39,9 +39,9 @@ class HomeActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("userinfos", Context.MODE_PRIVATE)
         val username = sharedPref.getString("username","username")
-        val userimage = sharedPref.getInt("image",R.drawable.profile)
-        binding.HiName.text="Hi $username"
-        binding.imageProfile.setImageResource(userimage)
+//        val userimage = sharedPref.getInt("image",R.drawable.profile)
+        binding.HiName.text="Hi $username 👋"
+//        binding.imageProfile.setImageResource(userimage)
 
     }
     private fun recyclerViewPopular(){
@@ -63,11 +63,10 @@ class HomeActivity : AppCompatActivity() {
         binding.recyclreCategorieList.layoutManager = manager
         val data = listOf(
             CategoryDomain("Sachet","sachet"),
-            CategoryDomain("Sirop","sirop"),
             CategoryDomain("Gélule","capsule"),
+            CategoryDomain("Sirop","sirop"),
             CategoryDomain("Comprimé","ic_image8"),
-            CategoryDomain("Vitamin","ic_image11"),
-            CategoryDomain("Ovule!Caps","ic_image3"),
+            CategoryDomain("Vitamin","ic_image11")
         )
         // ici on passe le manger de recycler view pour qu'on puise
         // recupere le view attribue a une position bien determine

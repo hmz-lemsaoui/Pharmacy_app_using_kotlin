@@ -10,10 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import com.example.e_commerceapp.Activity.CartActivity
-import com.example.e_commerceapp.Activity.FavoritesActivity
-import com.example.e_commerceapp.Activity.HomeActivity
-import com.example.e_commerceapp.Activity.UserProfileActivity
+import com.example.e_commerceapp.Activity.*
 import com.example.e_commerceapp.Adapter.CartListAdapter
 import com.example.e_commerceapp.Healper.ManagementCart
 import com.example.e_commerceapp.Healper.ManagementFavorite
@@ -41,6 +38,7 @@ class ButtomNavigationFragment() : Fragment() {
         val item_count_favorite=binding.itemCountFavorite
         val profileBtn = binding.profilebtn
         val favoriteBtn=binding.favoriteBtn
+        val supportBtn=binding.supportBtn
         //counter of number of item in card
         cartCounter=managementCart.getNumberOfItemInCard()
         if(cartCounter==0){
@@ -72,6 +70,9 @@ class ButtomNavigationFragment() : Fragment() {
         }
         favoriteBtn.setOnClickListener {
             startActivity(Intent(context, FavoritesActivity::class.java))
+        }
+        supportBtn.setOnClickListener {
+            startActivity(Intent(context, RateUsActivity::class.java))
         }
         return binding.root
     }

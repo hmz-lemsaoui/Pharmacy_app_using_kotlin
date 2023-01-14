@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_constraintCircleRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="75dp"
@@ -12,27 +13,31 @@
 
         <ImageView
             android:id="@+id/imageOfCategory"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.213"
-            app:srcCompat="@drawable/ic_image1" />
+            app:srcCompat="@drawable/img2" />
 
         <TextView
             android:id="@+id/textOfCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="9dp"
             android:text="TextView"
             android:textColor="#000000"
             android:textStyle="bold"
-
-            app:layout_constraintEnd_toEndOf="@+id/imageOfCategory"
-            app:layout_constraintHorizontal_bias="0.521"
-            app:layout_constraintStart_toStartOf="@+id/imageOfCategory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageOfCategory" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

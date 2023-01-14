@@ -6,12 +6,12 @@ import java.io.Serializable
 data class RecomendedDomain(
     val title: String,
     val pic: String,
+    var category:String="Sachet",
     val description: String,
-    val fee: Double,
+    val price: Double,
     val star: Int,
     val time: Int,
     val calories: Int,
-    var numberInCart: Int,
+    var numberInCart: Int=1,
     var isFavorite: Boolean = false,
-    var category:String="Sachet"
     ): Serializable

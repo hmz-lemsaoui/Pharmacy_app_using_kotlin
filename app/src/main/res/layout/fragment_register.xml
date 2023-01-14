@@ -8,28 +8,18 @@
         tools:context=".Activity.RegisterFragment">
 
 
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="36dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="Create Account"
-            android:textColor="#47274f"
+            android:textColor="#000000"
             android:textSize="26sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/back" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
@@ -39,6 +29,8 @@
             android:layout_marginTop="10dp"
             android:text="Please Fill the input blow here."
             android:textColor="#000000"
+            android:fontFamily="@font/ibm_plex_sans_light"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -72,6 +64,7 @@
                 android:paddingTop="2dp"
                 android:text="FULL NAME"
                 android:textColor="#000000"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintStart_toEndOf="@+id/imagename"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,7 +81,7 @@
                 android:textColor="#000000"
                 android:textColorHint="@color/grey"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imagename"
@@ -126,6 +119,7 @@
                 android:layout_weight="1"
                 android:paddingTop="2dp"
                 android:text="PASSWORD"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:textColor="#000000"
                 app:layout_constraintStart_toEndOf="@+id/imagepassword"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -142,7 +136,7 @@
                 android:textColor="#000000"
                 android:textColorHint="@color/grey"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imagepassword"
@@ -161,7 +155,7 @@
             android:paddingBottom="15dp"
             android:text="SIGN UP"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/ibm_plex_sans_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -170,7 +164,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -181,6 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already have an account?"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:textColor="#000000" />
 
             <TextView
@@ -188,9 +183,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sign in"
-                android:textColor="#dfb16d"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:text="◀ Swipe To Left"
+                android:fontFamily="@font/ibm_plex_sans_bold"
+                android:textColor="#3A8891" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -222,6 +218,7 @@
                 android:layout_weight="1"
                 android:paddingTop="2dp"
                 android:text="PASSWORD CONFIRMATION"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:textColor="#000000"
                 app:layout_constraintStart_toEndOf="@+id/imagepassword2"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -238,8 +235,7 @@
                 android:textColor="#000000"
                 android:textColorHint="@color/grey"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:fontFamily="@font/ibm_plex_sans_bold"                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imagepassword2"
                 app:layout_constraintTop_toBottomOf="@+id/confirmationtext" />
@@ -276,6 +272,7 @@
                 android:layout_weight="1"
                 android:paddingTop="2dp"
                 android:text="EMAIL"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:textColor="#000000"
                 app:layout_constraintStart_toEndOf="@+id/imageemail"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -308,6 +305,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:visibility="gone"
+            android:textColor="#E91E63"
+            android:fontFamily="@font/ibm_plex_sans_bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/faild4" />

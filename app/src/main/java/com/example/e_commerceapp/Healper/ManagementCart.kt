@@ -53,7 +53,7 @@ class ManagementCart (
         val listProduits: ArrayList<RecomendedDomain> = getListCart()
         var fee = 0.0
         for (i in 0 until listProduits.size){
-            fee +=  listProduits[i].fee * listProduits[i].numberInCart
+            fee +=  listProduits[i].price * listProduits[i].numberInCart
         }
         return fee
     }

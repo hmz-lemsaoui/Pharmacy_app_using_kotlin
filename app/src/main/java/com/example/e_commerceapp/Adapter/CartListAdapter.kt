@@ -42,8 +42,8 @@ class CartListAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = listMedicalSelected[position]
         holder.title_cart.text = data.title
-        holder.feeEachItem.text = "$${data.fee}"
-        holder.totalEachItem.text = "$${Math.round(data.numberInCart * data.fee)}"
+        holder.feeEachItem.text = "${data.price}"
+        holder.totalEachItem.text = "${Math.round(data.numberInCart * data.price)}"
         holder.numberItemtxt.text = "${data.numberInCart}"
         val mContext = holder.itemView.context
         val drawableResourceId = mContext.resources.getIdentifier(data.pic,"drawable",mContext.packageName)
