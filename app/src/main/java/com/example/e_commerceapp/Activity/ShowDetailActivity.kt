@@ -4,7 +4,9 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
+import com.example.e_commerceapp.ButtomNavigationFragment
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.Healper.ManagementCart
 import com.example.e_commerceapp.Healper.ManagementFavorite
@@ -16,9 +18,18 @@ class ShowDetailActivity : AppCompatActivity() {
     lateinit var managementCart: ManagementCart
     lateinit var managementFavorite: ManagementFavorite
     lateinit var mediaPlayer: MediaPlayer
+    lateinit var manager: FragmentManager
+    lateinit var navigationFragment: ButtomNavigationFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_show_detail)
+
+        manager = supportFragmentManager
+        val trans = manager.beginTransaction()
+        navigationFragment = ButtomNavigationFragment()
+        trans.replace(binding.fragmentContainerView2.id,navigationFragment)
+        trans.commit()
+
         managementCart = ManagementCart(this)
         managementFavorite = ManagementFavorite(this)
 
@@ -57,6 +68,9 @@ class ShowDetailActivity : AppCompatActivity() {
         addToCartBtn.setOnClickListener {
             obj.numberInCart = numberOrder
             managementCart.insertProduit(obj)
+            // increase the cart items number
+            navigationFragment.changeNumbers()
+
             mediaPlayer.start()
         }
         if(obj.isFavorite){
@@ -74,6 +88,8 @@ class ShowDetailActivity : AppCompatActivity() {
                 obj.isFavorite=true
             }
             managementFavorite.insertFavorite(obj)
+            // increase the cart items number
+            navigationFragment.changeNumbers()
         }
         minusCardbtn.setOnClickListener {
             if (numberOrder > 1){
@@ -87,5 +103,9 @@ class ShowDetailActivity : AppCompatActivity() {
             numberItemtxt.text = numberOrder.toString()
             totalPricetxt.text = "${Math.round(obj.price * numberOrder)}"
         }
+    }
+    override fun onRestart() {
+        navigationFragment.changeNumbers()
+        super.onRestart()
     }
 }

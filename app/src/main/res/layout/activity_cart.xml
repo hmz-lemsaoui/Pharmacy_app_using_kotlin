@@ -265,15 +265,15 @@
         </LinearLayout>
     </ScrollView>
 
-    <androidx.fragment.app.FragmentContainerView
+    <FrameLayout
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.e_commerceapp.ButtomNavigationFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_buttom_navigation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

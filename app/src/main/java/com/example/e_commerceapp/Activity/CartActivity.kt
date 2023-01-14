@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_commerceapp.Adapter.CartListAdapter
+import com.example.e_commerceapp.ButtomNavigationFragment
 import com.example.e_commerceapp.Healper.ManagementCart
 import com.example.e_commerceapp.Interface.ChangeNumberItemListener
 import com.example.e_commerceapp.R
@@ -16,10 +18,19 @@ import com.example.e_commerceapp.databinding.ActivityCartBinding
 class CartActivity : AppCompatActivity() {
     lateinit var binding: ActivityCartBinding
     lateinit var managementCart: ManagementCart
+    lateinit var manager: FragmentManager
+    lateinit var navigationFragment: ButtomNavigationFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this,R.layout.activity_cart)
         managementCart = ManagementCart(this)
+
+        manager = supportFragmentManager
+        val trans = manager.beginTransaction()
+        navigationFragment = ButtomNavigationFragment()
+        trans.replace(binding.fragmentContainerView.id,navigationFragment)
+        trans.commit()
+
         initList()
         calculateCard()
 
@@ -45,6 +56,9 @@ class CartActivity : AppCompatActivity() {
         val data = managementCart.getListCart()
         val adapter = CartListAdapter(data,object : ChangeNumberItemListener{
             override fun changed() {
+                // increase the cart items number
+                notifyFragmentNumbers()
+
                 calculateCard()
                 testVisible()
             }
@@ -68,6 +82,8 @@ class CartActivity : AppCompatActivity() {
                     override fun changed() {
                         calculateCard()
                         testVisible()
+                        // increase the cart items number
+                        notifyFragmentNumbers()
                         adapter.notifyDataSetChanged()
                     }
                 })
@@ -79,6 +95,10 @@ class CartActivity : AppCompatActivity() {
         binding.recyclerViewList.adapter = adapter
         testVisible()
     }
+    private fun notifyFragmentNumbers(){
+        navigationFragment.changeNumbers()
+    }
+
     private fun testVisible(){
         val isEmptyCard = binding.isEmptyCard
 
@@ -93,5 +113,9 @@ class CartActivity : AppCompatActivity() {
             binding.checkout.visibility = View.VISIBLE
             binding.facture.visibility = View.VISIBLE
         }
+    }
+    override fun onRestart() {
+        navigationFragment.changeNumbers()
+        super.onRestart()
     }
 }

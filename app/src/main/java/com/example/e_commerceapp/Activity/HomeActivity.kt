@@ -9,9 +9,11 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_commerceapp.Adapter.CategoryAdapter
 import com.example.e_commerceapp.Adapter.RecomendedAdapter
+import com.example.e_commerceapp.ButtomNavigationFragment
 import com.example.e_commerceapp.Domain.CategoryDomain
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.Healper.DbHelper
@@ -23,9 +25,17 @@ class HomeActivity : AppCompatActivity() {
     lateinit var dataRecAdapter:ArrayList<RecomendedDomain>
     private val db = DbHelper(this)
     lateinit var recomendedAdapter: RecomendedAdapter
+    lateinit var manager: FragmentManager
+    lateinit var navigationFragment: ButtomNavigationFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_home)
+        manager = supportFragmentManager
+        val trans = manager.beginTransaction()
+        navigationFragment = ButtomNavigationFragment()
+        trans.replace(binding.fragmentContainerView2.id,navigationFragment)
+        trans.commit()
+
         recyclerViewPopular()
         recyclerViewCategory()
         binding.seeAll.setOnClickListener{
@@ -63,7 +73,7 @@ class HomeActivity : AppCompatActivity() {
         binding.recyclreCategorieList.layoutManager = manager
         val data = listOf(
             CategoryDomain("Sachet","sachet"),
-            CategoryDomain("Gélule","capsule"),
+            CategoryDomain("Gélule","capsule1"),
             CategoryDomain("Sirop","sirop"),
             CategoryDomain("Comprimé","ic_image8"),
             CategoryDomain("Vitamin","ic_image11")
@@ -102,5 +112,9 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+    override fun onRestart() {
+        navigationFragment.changeNumbers()
+        super.onRestart()
     }
 }

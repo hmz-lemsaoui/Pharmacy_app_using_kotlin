@@ -8,16 +8,24 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import com.example.e_commerceapp.ButtomNavigationFragment
 import com.example.e_commerceapp.Healper.DbHelper
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityUserProfileBinding
 
 class UserProfileActivity : AppCompatActivity() {
-    private lateinit var imageView:ImageView
-
+    lateinit var manager: FragmentManager
+    lateinit var navigationFragment: ButtomNavigationFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityUserProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_user_profile)
+
+        manager = supportFragmentManager
+        val trans = manager.beginTransaction()
+        navigationFragment = ButtomNavigationFragment()
+        trans.replace(binding.fragmentContainerView2.id,navigationFragment)
+        trans.commit()
 
         val sharedPref = getSharedPreferences("userinfos", Context.MODE_PRIVATE)
         val userId=sharedPref.getInt("id",-1)
@@ -66,6 +74,10 @@ class UserProfileActivity : AppCompatActivity() {
             binding.code.setText(code)
         }
 
+    }
+    override fun onRestart() {
+        navigationFragment.changeNumbers()
+        super.onRestart()
     }
 
 }

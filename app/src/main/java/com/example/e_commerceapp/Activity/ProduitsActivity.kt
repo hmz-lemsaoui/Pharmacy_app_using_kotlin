@@ -5,17 +5,27 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.e_commerceapp.Adapter.RecomendedAdapter
+import com.example.e_commerceapp.ButtomNavigationFragment
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityProduitsBinding
 
 class ProduitsActivity : AppCompatActivity(){
     lateinit var binding : ActivityProduitsBinding
+    lateinit var manager: FragmentManager
+    lateinit var navigationFragment: ButtomNavigationFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_produits)
+
+        manager = supportFragmentManager
+        val trans = manager.beginTransaction()
+        navigationFragment = ButtomNavigationFragment()
+        trans.replace(binding.fragmentContainerView.id,navigationFragment)
+        trans.commit()
 
         recyclerViewPopular()
         binding.back2.setOnClickListener {
@@ -52,5 +62,9 @@ class ProduitsActivity : AppCompatActivity(){
             adapter.filter.filter(searchValue)
         }
 
+    }
+    override fun onRestart() {
+        navigationFragment.changeNumbers()
+        super.onRestart()
     }
 }

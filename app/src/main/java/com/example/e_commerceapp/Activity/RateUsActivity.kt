@@ -5,14 +5,25 @@ import android.os.Bundle
 import android.widget.RatingBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import com.example.e_commerceapp.ButtomNavigationFragment
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityRateUsBinding
 
 class RateUsActivity : AppCompatActivity() {
+    lateinit var manager: FragmentManager
+    lateinit var navigationFragment: ButtomNavigationFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_rate_us)
         val binding:ActivityRateUsBinding=DataBindingUtil.setContentView(this,R.layout.activity_rate_us)
+
+        manager = supportFragmentManager
+        val trans = manager.beginTransaction()
+        navigationFragment = ButtomNavigationFragment()
+        trans.replace(binding.fragmentContainerView2.id,navigationFragment)
+        trans.commit()
+
         val rating_bar=binding.ratingBar
         rating_bar.onRatingBarChangeListener = RatingBar.OnRatingBarChangeListener { _, rating, _ ->
             // Do something with the rating value
@@ -27,4 +38,8 @@ class RateUsActivity : AppCompatActivity() {
             binding.imageRate.setImageResource(img)
     }
 }
+    override fun onRestart() {
+        navigationFragment.changeNumbers()
+        super.onRestart()
+    }
 }

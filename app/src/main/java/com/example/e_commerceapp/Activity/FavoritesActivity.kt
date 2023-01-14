@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_commerceapp.Adapter.FavoriteAdapter
+import com.example.e_commerceapp.ButtomNavigationFragment
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.Healper.ManagementCart
 import com.example.e_commerceapp.Healper.ManagementFavorite
@@ -19,11 +21,19 @@ import com.example.e_commerceapp.databinding.ActivityFavoritesBinding
 class FavoritesActivity : AppCompatActivity() {
     lateinit var binding : ActivityFavoritesBinding
     lateinit var managementFavorite: ManagementFavorite
+    lateinit var manager: FragmentManager
+    lateinit var navigationFragment: ButtomNavigationFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_favorites)
         managementFavorite = ManagementFavorite(this)
         recyclerViewFavorite()
+
+        manager = supportFragmentManager
+        val trans = manager.beginTransaction()
+        navigationFragment = ButtomNavigationFragment()
+        trans.replace(binding.fragmentContainerView2.id,navigationFragment)
+        trans.commit()
 
         binding.back2.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
@@ -58,6 +68,9 @@ class FavoritesActivity : AppCompatActivity() {
                 managementFavorite.deleteElementBySwip(data,position,object : ChangeNumberItemListener{
                     override fun changed() {
                         testVisible()
+                        // increase the cart items number
+                        notifyFragmentNumbers()
+
                         adapter.notifyDataSetChanged()
                     }
                 })
@@ -67,6 +80,9 @@ class FavoritesActivity : AppCompatActivity() {
         itemTouchHelper.attachToRecyclerView(binding.recyclerFavoriteList)
         binding.recyclerFavoriteList.adapter = adapter
 
+    }
+    private fun notifyFragmentNumbers(){
+        navigationFragment.changeNumbers()
     }
     private fun testVisible(){
         val isEmptyCard = binding.isEmptyCard
@@ -78,5 +94,9 @@ class FavoritesActivity : AppCompatActivity() {
             isEmptyCard.visibility = View.GONE
             scrollViewCardList.visibility = View.VISIBLE
         }
+    }
+    override fun onRestart() {
+        navigationFragment.changeNumbers()
+        super.onRestart()
     }
 }
