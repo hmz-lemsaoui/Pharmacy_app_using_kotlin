@@ -232,7 +232,7 @@ class DbHelper(var context: Context) :
 
     companion object {
         // Database Version
-        private val DATABASE_VERSION = 10
+        private val DATABASE_VERSION = 11
 
         // Database Name
         private val DATABASE_NAME = "DbApp"
