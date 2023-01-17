@@ -14,7 +14,6 @@ import android.widget.Filterable
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.e_commerceapp.Activity.ShowDetailActivity
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.Healper.ManagementFavorite
 import com.example.e_commerceapp.Interface.ChangeNumberItemListener
@@ -73,23 +72,23 @@ class FavoriteAdapter(
 //            managementFavorite.insertFavorite(listProduitsFiltrer[position])
 //        }
 
-        holder.titleFavorite.setOnClickListener {
-            val intent = Intent(holder.itemView.context, ShowDetailActivity::class.java)
-            intent.putExtra("object",data)
-//            holder.itemView.context.startActivity(intent)
-
-            //pour transition
-            val options = ActivityOptions.makeSceneTransitionAnimation(
-                    holder.itemView.context as Activity?,
-                    Pair.create(binding.titleFavorite, "titleTransition"),
-                    Pair.create(binding.imageFavorite, "imageTransition"),
-                    Pair.create(binding.descriptionFavorite, "descriptionTransition"),
-                    Pair.create(binding.feeFavorite, "priceTransition"))
-                    Pair.create(binding.star,"starTransition")
-                    Pair.create(binding.removeFavorite,"favoriteTransition")
-
-            holder.itemView.context.startActivity(intent,options.toBundle())
-        }
+//        holder.titleFavorite.setOnClickListener {
+//            val intent = Intent(holder.itemView.context, ShowDetailActivity::class.java)
+//            intent.putExtra("object",data)
+////            holder.itemView.context.startActivity(intent)
+//
+//            //pour transition
+//            val options = ActivityOptions.makeSceneTransitionAnimation(
+//                    holder.itemView.context as Activity?,
+//                    Pair.create(binding.titleFavorite, "titleTransition"),
+//                    Pair.create(binding.imageFavorite, "imageTransition"),
+//                    Pair.create(binding.descriptionFavorite, "descriptionTransition"),
+//                    Pair.create(binding.feeFavorite, "priceTransition"))
+//                    Pair.create(binding.star,"starTransition")
+//                    Pair.create(binding.removeFavorite,"favoriteTransition")
+//
+//            holder.itemView.context.startActivity(intent,options.toBundle())
+//        }
     }
 
     override fun getItemCount(): Int {

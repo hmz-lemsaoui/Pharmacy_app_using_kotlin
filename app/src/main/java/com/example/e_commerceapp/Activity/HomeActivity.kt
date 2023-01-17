@@ -1,120 +1,120 @@
 package com.example.e_commerceapp.Activity
 
-import android.content.Context
-import android.content.Intent
+
 import android.os.Bundle
-import android.view.MenuInflater
 import android.view.View
-import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.e_commerceapp.Adapter.CategoryAdapter
-import com.example.e_commerceapp.Adapter.RecomendedAdapter
-import com.example.e_commerceapp.ButtomNavigationFragment
-import com.example.e_commerceapp.Domain.CategoryDomain
+import androidx.fragment.app.FragmentTransaction
 import com.example.e_commerceapp.Domain.RecomendedDomain
-import com.example.e_commerceapp.Healper.DbHelper
+import com.example.e_commerceapp.Healper.ManagementCart
+import com.example.e_commerceapp.Healper.ManagementFavorite
+import com.example.e_commerceapp.Interface.OnNumbersNavigationChange
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityHomeBinding
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), HomeFragment.OnItemHomeFragmentListener,
+    OnNumbersNavigationChange {
     lateinit var binding : ActivityHomeBinding
-    lateinit var dataRecAdapter:ArrayList<RecomendedDomain>
-    private val db = DbHelper(this)
-    lateinit var recomendedAdapter: RecomendedAdapter
     lateinit var manager: FragmentManager
-    lateinit var navigationFragment: ButtomNavigationFragment
+    lateinit var trans: FragmentTransaction
+    lateinit var managementCart: ManagementCart
+    lateinit var managementFavorite: ManagementFavorite
+    var cartCounter: Int? = 0
+    var favoriteCounter: Int? = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_home)
         manager = supportFragmentManager
-        val trans = manager.beginTransaction()
-        navigationFragment = ButtomNavigationFragment()
-        trans.replace(binding.fragmentContainerView2.id,navigationFragment)
+        // bottom navigation bar
+        managementCart = ManagementCart(this)
+        managementFavorite = ManagementFavorite(this)
+        val homeBtn = binding.homeBtn
+        val cartBtn = binding.cartBtn
+        val profileBtn = binding.profilebtn
+        val favoriteBtn = binding.favoriteBtn
+        val supportBtn = binding.supportBtn
+        homeBtn.setOnClickListener {
+            trans = manager.beginTransaction()
+            val homeFragment = HomeFragment()
+            trans.replace(binding.mainContentFragment.id,homeFragment)
+            trans.commit()
+        }
+        cartBtn.setOnClickListener {
+            trans = manager.beginTransaction()
+            val cartFragment = CartFragment()
+            trans.replace(binding.mainContentFragment.id,cartFragment)
+            trans.commit()
+        }
+        profileBtn.setOnClickListener {
+            trans = manager.beginTransaction()
+            val userProfileFragment = UserProfileFragment()
+            trans.replace(binding.mainContentFragment.id,userProfileFragment)
+            trans.commit()
+        }
+        favoriteBtn.setOnClickListener {
+            trans = manager.beginTransaction()
+            val favoritesFragment = FavoritesFragment()
+            trans.replace(binding.mainContentFragment.id,favoritesFragment)
+            trans.commit()
+        }
+        supportBtn.setOnClickListener {
+            trans = manager.beginTransaction()
+            val rateUsFragment = RateUsFragment()
+            trans.replace(binding.mainContentFragment.id,rateUsFragment)
+            trans.commit()
+        }
+
+        // home fragment
+        trans = manager.beginTransaction()
+        val homeFragment = HomeFragment()
+        trans.replace(binding.mainContentFragment.id,homeFragment)
         trans.commit()
+        // change numbers
+        changeNumbers()
 
-        recyclerViewPopular()
-        recyclerViewCategory()
-        binding.seeAll.setOnClickListener{
-            val intent= Intent(this@HomeActivity, ProduitsActivity::class.java)
-            val bundle=Bundle()
-            bundle.putSerializable("data",dataRecAdapter)
-            intent.putExtras(bundle)
-            startActivity(intent)
+    }
+
+    fun changeNumbers(){
+        val item_count_card = binding.itemCountCard
+        val item_count_favorite = binding.itemCountFavorite
+        //counter of number of item in card
+        cartCounter = managementCart.getNumberOfItemInCard()
+        if (cartCounter == 0) {
+            item_count_card.visibility = View.GONE
         }
-        //afficher le nom de user
-
-        val sharedPref = getSharedPreferences("userinfos", Context.MODE_PRIVATE)
-        val username = sharedPref.getString("username","username")
-//        val userimage = sharedPref.getInt("image",R.drawable.profile)
-        binding.HiName.text="Hi $username 👋"
-//        binding.imageProfile.setImageResource(userimage)
-
-    }
-    private fun recyclerViewPopular(){
-        val charsearch1 = binding.charsearch1
-        val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        binding.recyclerPopularList.layoutManager = manager
-        dataRecAdapter = db.getAllMedsByCategory("Sachet") // recuperation des mediacaments by category
-        recomendedAdapter = RecomendedAdapter(dataRecAdapter,this)
-        binding.recyclerPopularList.adapter = recomendedAdapter
-        binding.imgeSearch.setOnClickListener {
-            val searchValue = charsearch1.text.toString()
-            recomendedAdapter.filter.filter(searchValue)
+        if (cartCounter!! >= 1) {
+            item_count_card.visibility = View.VISIBLE
+            item_count_card.text = cartCounter.toString()
         }
-
-    }
-
-    private fun recyclerViewCategory(){
-        val manager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        binding.recyclreCategorieList.layoutManager = manager
-        val data = listOf(
-            CategoryDomain("Sachet","sachet"),
-            CategoryDomain("Gélule","capsule1"),
-            CategoryDomain("Sirop","sirop"),
-            CategoryDomain("Comprimé","ic_image8"),
-            CategoryDomain("Vitamin","ic_image11")
-        )
-        // ici on passe le manger de recycler view pour qu'on puise
-        // recupere le view attribue a une position bien determine
-        val adapter = CategoryAdapter(data,manager,recomendedAdapter,dataRecAdapter,this)
-        binding.recyclreCategorieList.adapter = adapter
-    }
-    fun showPopup(view: View) {
-        val popup = PopupMenu(this, view)
-        val inflater: MenuInflater = popup.menuInflater
-        inflater.inflate(R.menu.menu_profile, popup.menu)
-//        popup.setOnMenuItemClickListener { item ->
-//            when (item.itemId) {
-//                R.id.Edit -> true
-//                else -> false
-//            }
-//        }
-        popup.show()
-        popup.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.Edit -> {
-                    val intent = Intent(this, UserProfileActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                R.id.logout -> {
-                    // Execute the action for the favorite menu item here
-                    Toast.makeText(applicationContext, "Log Out", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    finish()
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
+        //counter of number of item in favorite
+        favoriteCounter = managementFavorite.getNumberOfItemInFavorite()
+        if (favoriteCounter == 0) {
+            item_count_favorite.visibility = View.GONE
+        }
+        if (favoriteCounter!! >= 1) {
+            item_count_favorite.visibility = View.VISIBLE
+            item_count_favorite.text = favoriteCounter.toString()
         }
     }
-    override fun onRestart() {
-        navigationFragment.changeNumbers()
-        super.onRestart()
+
+    override fun passMedcineInfo(recomendedDomain: RecomendedDomain) {
+        trans = manager.beginTransaction()
+        val showDetailFragment = ShowDetailFragment.newInstance(recomendedDomain)
+        trans.replace(binding.mainContentFragment.id,showDetailFragment)
+        trans.commit()
+    }
+
+    override fun seeAllMedcines(categoryItems: ArrayList<RecomendedDomain>) {
+        trans = manager.beginTransaction()
+        val produitsFragment = ProduitsFragment.newInstance(categoryItems)
+        trans.replace(binding.mainContentFragment.id,produitsFragment)
+        trans.commit()
+    }
+
+    override fun onNumbersChange() {
+        changeNumbers()
     }
 }

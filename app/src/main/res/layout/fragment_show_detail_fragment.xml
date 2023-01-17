@@ -6,7 +6,7 @@
         android:background="#F6F6F6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activity.ShowDetailActivity">
+        tools:context=".Activity.ShowDetailFragment">
 
         <ImageView
             android:id="@+id/medicalPic"
@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/background_white"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/medicalPic">
@@ -310,12 +309,5 @@
                     android:fontFamily="@font/ibm_plex_sans_bold" />
             </LinearLayout>
         </LinearLayout>
-        <FrameLayout
-            android:id="@+id/fragmentContainerView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

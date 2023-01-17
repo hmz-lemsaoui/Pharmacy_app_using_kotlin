@@ -1,7 +1,6 @@
 package com.example.e_commerceapp.Adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.e_commerceapp.Domain.CategoryDomain
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.Healper.DbHelper
+import com.example.e_commerceapp.Interface.OnCategoryItemClickListener
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ItemCategoryBinding
 
@@ -19,7 +19,8 @@ class CategoryAdapter(
     val layoutManager: LinearLayoutManager,
     val recomendedAdapter: RecomendedAdapter,
     var dataOfRecAdapter: ArrayList<RecomendedDomain>,
-    mContext: Context
+    mContext: Context,
+    var onCategoryItemClickListener: OnCategoryItemClickListener
 ) : RecyclerView.Adapter<CategoryAdapter.MyViewHolder>() {
     lateinit var binding: ItemCategoryBinding
     private val db = DbHelper(mContext)
@@ -55,6 +56,7 @@ class CategoryAdapter(
                     dataOfRecAdapter.add(it)
                 }
                 recomendedAdapter.notifyDataSetChanged()
+                onCategoryItemClickListener.onItemClickListener(data)
             }
         }
 

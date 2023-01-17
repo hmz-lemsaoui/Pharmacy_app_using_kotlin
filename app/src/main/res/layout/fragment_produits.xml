@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#f6f7fb"
-        tools:context=".Activity.ProduitsActivity">
+        tools:context=".Activity.ProduitsFragment">
 
         <ImageView
             android:id="@+id/back2"
@@ -26,9 +26,9 @@
             android:layout_marginStart="36dp"
             android:layout_marginTop="16dp"
             android:text="Liste Of Medicines"
-            android:textColor="#3A8891"
+            android:textColor="#47274f"
             android:textSize="26sp"
-            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/back2" />
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,8 +64,7 @@
                 android:background="@android:color/transparent"
                 android:hint="Search Your Favorite Vitamin"
                 android:inputType="textPersonName"
-                android:textStyle="bold"
-                android:fontFamily="@font/ibm_plex_sans_light"
+                android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imgeSearch"
                 app:layout_constraintStart_toStartOf="parent"
@@ -77,9 +76,8 @@
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@id/fragmentContainerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,17 +98,6 @@
 
             </androidx.recyclerview.widget.RecyclerView>
         </ScrollView>
-
-
-        <FrameLayout
-            android:id="@+id/fragmentContainerView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        </FrameLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

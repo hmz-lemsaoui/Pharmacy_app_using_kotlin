@@ -1,37 +1,51 @@
 package com.example.e_commerceapp.Activity
 
+import android.content.Context
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.example.e_commerceapp.ButtomNavigationFragment
 import com.example.e_commerceapp.Domain.RecomendedDomain
 import com.example.e_commerceapp.Healper.ManagementCart
 import com.example.e_commerceapp.Healper.ManagementFavorite
+import com.example.e_commerceapp.Interface.OnNumbersNavigationChange
 import com.example.e_commerceapp.R
-import com.example.e_commerceapp.databinding.ActivityShowDetailBinding
+import com.example.e_commerceapp.databinding.FragmentShowDetailFragmentBinding
 
-class ShowDetailActivity : AppCompatActivity() {
-    lateinit var binding: ActivityShowDetailBinding
+class ShowDetailFragment : Fragment() {
+    lateinit var binding: FragmentShowDetailFragmentBinding
     lateinit var managementCart: ManagementCart
     lateinit var managementFavorite: ManagementFavorite
     lateinit var mediaPlayer: MediaPlayer
-    lateinit var manager: FragmentManager
-    lateinit var navigationFragment: ButtomNavigationFragment
+    lateinit var recomendedDomain: RecomendedDomain
+    private var onNumbersNavigationChange: OnNumbersNavigationChange? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        onNumbersNavigationChange = context as OnNumbersNavigationChange?
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        onNumbersNavigationChange = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_show_detail)
+        recomendedDomain = arguments?.getSerializable("object") as RecomendedDomain
+    }
 
-        manager = supportFragmentManager
-        val trans = manager.beginTransaction()
-        navigationFragment = ButtomNavigationFragment()
-        trans.replace(binding.fragmentContainerView2.id,navigationFragment)
-        trans.commit()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentShowDetailFragmentBinding.inflate(inflater,container,false)
 
-        managementCart = ManagementCart(this)
-        managementFavorite = ManagementFavorite(this)
+        managementCart = ManagementCart(requireContext())
+        managementFavorite = ManagementFavorite(requireContext())
 
         val medicalPic = binding.medicalPic
         val price_txt = binding.priceTxt
@@ -47,12 +61,12 @@ class ShowDetailActivity : AppCompatActivity() {
         val titledetailtxt = binding.titledetailtxt
         val favorite_btn=binding.favoriteBtn
 
-        mediaPlayer = MediaPlayer.create(this , R.raw.add_to_card)
+        mediaPlayer = MediaPlayer.create(context , R.raw.add_to_card)
 
         var intFavorite= 0
         // recuperation du bundle
-        val obj = intent.getSerializableExtra("object") as RecomendedDomain
-        val drawableResourceId = this.resources.getIdentifier(obj.pic,"drawable",this.packageName)
+        val obj = recomendedDomain
+        val drawableResourceId = requireActivity().resources.getIdentifier(obj.pic,"drawable",requireContext().packageName)
         Glide.with(this).load(drawableResourceId).into(medicalPic)
         price_txt.text = "${obj.price}"
         titledetailtxt.text = obj.title
@@ -69,7 +83,7 @@ class ShowDetailActivity : AppCompatActivity() {
             obj.numberInCart = numberOrder
             managementCart.insertProduit(obj)
             // increase the cart items number
-            navigationFragment.changeNumbers()
+            onNumbersNavigationChange?.onNumbersChange()
 
             mediaPlayer.start()
         }
@@ -89,7 +103,7 @@ class ShowDetailActivity : AppCompatActivity() {
             }
             managementFavorite.insertFavorite(obj)
             // increase the cart items number
-            navigationFragment.changeNumbers()
+            onNumbersNavigationChange?.onNumbersChange()
         }
         minusCardbtn.setOnClickListener {
             if (numberOrder > 1){
@@ -103,9 +117,17 @@ class ShowDetailActivity : AppCompatActivity() {
             numberItemtxt.text = numberOrder.toString()
             totalPricetxt.text = "${Math.round(obj.price * numberOrder)}"
         }
+
+        return binding.root
     }
-    override fun onRestart() {
-        navigationFragment.changeNumbers()
-        super.onRestart()
+
+    companion object {
+        @JvmStatic
+        fun newInstance(recomendedDomain: RecomendedDomain) =
+            ShowDetailFragment().apply {
+                arguments = Bundle().apply {
+                    putSerializable("object", recomendedDomain)
+                }
+            }
     }
 }

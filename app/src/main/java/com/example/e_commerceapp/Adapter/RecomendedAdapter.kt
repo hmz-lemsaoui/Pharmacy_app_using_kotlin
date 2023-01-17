@@ -1,10 +1,7 @@
 package com.example.e_commerceapp.Adapter
 
-import android.app.Activity
-import android.app.ActivityOptions
+
 import android.content.Context
-import android.content.Intent
-import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +10,15 @@ import android.widget.Filterable
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.e_commerceapp.Activity.ShowDetailActivity
 import com.example.e_commerceapp.Domain.RecomendedDomain
+import com.example.e_commerceapp.Interface.OnItemClickListener
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ItemRecomendedBinding
 
 class RecomendedAdapter(
     val popularList: List<RecomendedDomain>,
-    val mCon: Context
+    val mCon: Context,
+    val onItemClickListener : OnItemClickListener
 ) : RecyclerView.Adapter<RecomendedAdapter.MyViewHolder>() ,Filterable{
     lateinit var binding: ItemRecomendedBinding
     var listProduitsFiltrer: List<RecomendedDomain> = ArrayList()
@@ -53,19 +51,20 @@ class RecomendedAdapter(
         val mContext = holder.itemView.context
         val drawableResourceId = mContext.resources.getIdentifier(data.pic,"drawable",mContext.packageName)
         Glide.with(mContext).load(drawableResourceId).into(holder.imageRecomended)
-
+//
         holder.btn_add_to_card.setOnClickListener {
-            val intent = Intent(holder.itemView.context, ShowDetailActivity::class.java)
-            intent.putExtra("object",data)
+            onItemClickListener.onItemClick(data)
+//            val intent = Intent(holder.itemView.context, ShowDetailActivity::class.java)
+//            intent.putExtra("object",data)
 //            holder.itemView.context.startActivity(intent)
-
-            //pour transition
-            val options = ActivityOptions.makeSceneTransitionAnimation(
-                    holder.itemView.context as Activity?,
-                    Pair.create(binding.titleRecomended, "titleTransition"),
-                    Pair.create(binding.imageRecomended, "imageTransition"),
-                    Pair.create(binding.feeRecomended, "priceTransition"))
-            holder.itemView.context.startActivity(intent,options.toBundle())
+//
+//            //pour transition
+//            val options = ActivityOptions.makeSceneTransitionAnimation(
+//                    holder.itemView.context as Activity?,
+//                    Pair.create(binding.titleRecomended, "titleTransition"),
+//                    Pair.create(binding.imageRecomended, "imageTransition"),
+//                    Pair.create(binding.feeRecomended, "priceTransition"))
+//            holder.itemView.context.startActivity(intent,options.toBundle())
         }
     }
 
@@ -101,7 +100,6 @@ class RecomendedAdapter(
                 }
                 notifyDataSetChanged()
             }
-
         }
     }
 }
